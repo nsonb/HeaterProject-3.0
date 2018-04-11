@@ -10,5 +10,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //this is the project for Heater
+        //Tested with SDK Version API 27
     }
 }

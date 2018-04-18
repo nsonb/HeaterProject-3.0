@@ -129,7 +129,6 @@ public class ThingSee {
             Log.d("THINGSEE", "No Thingsee device");
             item = null;
         }
-
         return (item);
     }
 
@@ -189,7 +188,7 @@ public class ThingSee {
         try {
             for (int i = 0; i < events.length(); i++) {
                 JSONObject event = events.getJSONObject(i);
-                Location   loc   = new Location("=='");
+                Location   loc   = new Location("hey");
 
                 loc.setTime(event.getLong("timestamp"));
                 k = 0;

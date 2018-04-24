@@ -1,16 +1,19 @@
-/* Request 20 latest position measurements and displays them on the
-        * listview wigdet.
-        *
-        * Note: you need to insert the following line before application -tag in
-        * the AndroidManifest.xml file
-        *  <uses-permission android:name="android.permission.INTERNET" />
-        *
-        * Author(s): Jarkko Vuori
-        * Modification(s):
-        *   First version created on 04.02.2017
-        *   Clears the positions array before button pressed 15.02.2017
-        *   Stores username and password to SharedPreferences 17.02.2017
-        */
+/*
+ * MainActivity.java -- Simple demo application for the Thingsee cloud server agent
+ *
+ * Request 20 latest position measurements and displays them on the
+ * listview wigdet.
+ *
+ * Note: you need to insert the following line before application -tag in
+ * the AndroidManifest.xml file
+ *  <uses-permission android:name="android.permission.INTERNET" />
+ *
+ * Author(s): Jarkko Vuori
+ * Modification(s):
+ *   First version created on 04.02.2017
+ *   Clears the positions array before button pressed 15.02.2017
+ *   Stores username and password to SharedPreferences 17.02.2017
+ */
 package com.example.asd.heaterproject;
 
 import android.app.Activity;
@@ -31,11 +34,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.asd.heaterproject.R;
+
 import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int    MAXPOSITIONS = 20;
@@ -120,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // show it
         alertDialog.show();
-    }
+}
 
     public void onClick(View v) {
         Log.d("USR", "Button pressed");
@@ -134,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * so that it does not slow down the user interface (UI)
      */
     private class TalkToThingsee extends AsyncTask<String, Integer, String> {
-        ThingSee       thingsee;
+        ThingSee thingsee;
         List<Location> coordinates = new ArrayList<Location>();
 
         @Override
@@ -170,8 +176,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Location loc = coordinates.get(i);
 
                     positions[i] = (new Date(loc.getTime())) +
-                            " (" + loc.getLatitude() + "," +
-                            loc.getLongitude() + ")"; //coordinates.get(i).toString();
+                                   " (" + loc.getLatitude() + "," +
+                                   loc.getLongitude() + ")"; //coordinates.get(i).toString();
                 }
             } else {
                 // no, tell that to the user and ask a new username/password pair

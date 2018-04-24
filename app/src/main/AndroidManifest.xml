@@ -1,40 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<manifest package="com.example.asd.heaterproject"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-permission
-        android:name="android.permission.INTERNET"/>
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.asd.heaterproject">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
-    <application android:theme="@style/AppTheme"
-        android:supportsRtl="true"
-        android:label="@string/app_name"
+    <application
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:allowBackup="true">
-        <activity
-            android:name=".LauncherActivity">
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".LauncherActivity">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.MAIN"/>
-                <category
-                    android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.VIEW"/>
-                <category
-                    android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SontrasTestActivity">
+        <activity android:name=".SontrasTestActivity">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.VIEW"/>
-                <category
-                    android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".EnvironmentActivity" />
+        <activity android:name=".BatteryActivity"></activity>
     </application>
+
 </manifest>

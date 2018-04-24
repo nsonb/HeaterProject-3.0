@@ -75,7 +75,9 @@ public class ThingSee {
         fConnection = false;
         try {
             connection = new URL(url + path).openConnection();
-            connection.setConnectTimeout(5000); connection.setReadTimeout(5000);    // Spesify timeouts for the slow ThingSee server
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);    // Spesify timeouts for the slow ThingSee server
+
             connection.setRequestProperty("Accept-Charset", charset);
             connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
             if (accountAuthToken != null)
@@ -131,7 +133,6 @@ public class ThingSee {
             Log.d("THINGSEE", "No Thingsee device");
             item = null;
         }
-        
         return (item);
     }
 

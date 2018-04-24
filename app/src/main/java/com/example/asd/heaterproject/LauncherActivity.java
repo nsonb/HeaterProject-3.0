@@ -22,6 +22,10 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         mainButton.setOnClickListener(this);
         Button sontrasButton = (Button)findViewById(R.id.sontrasButton);
         sontrasButton.setOnClickListener(this);
+        Button batteryButton = (Button)findViewById(R.id.batteryButton);
+        batteryButton.setOnClickListener(this);
+        Button environmentButton = (Button)findViewById(R.id.environmentButton);
+        environmentButton.setOnClickListener(this);
     }
 
     @Override
@@ -34,6 +38,14 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
             case R.id.sontrasButton:
                 Intent sontrasTest = new Intent(this, SontrasTestActivity.class);
                 startActivity(sontrasTest);
+                break;
+            case R.id.batteryButton:
+                Intent battery = new Intent(this, BatteryActivity.class);
+                startActivity(battery);
+                break;
+            case R.id.environmentButton:
+                Intent environment = new Intent(this, EnvironmentActivity.class);
+                startActivity(environment);
                 break;
         }
 

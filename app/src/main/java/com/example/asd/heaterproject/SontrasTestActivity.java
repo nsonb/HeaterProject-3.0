@@ -23,7 +23,7 @@ public class SontrasTestActivity extends AppCompatActivity implements View.OnCli
         goBack.setOnClickListener(this);
         openMap.setOnClickListener(this);
 
-        intro.setText("Now with a Maps activity!");
+        intro.setText("Now with a Google Maps activity");
     }
 
     @Override

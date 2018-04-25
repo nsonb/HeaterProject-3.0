@@ -8,4 +8,7 @@
     <string name="goBackButton">Go back</string>
     <string name="openMapButton">Open Google Maps</string>
     <string name="title_activity_maps">Map</string>
+    <string name="batteryButton">Go to battery activity</string>
+    <string name="environmentButton">Go to environment activity</string>
+
 </resources>

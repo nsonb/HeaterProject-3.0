@@ -1,19 +1,3 @@
-/*
- * MainActivity.java -- Simple demo application for the Thingsee cloud server agent
- *
- * Request 20 latest position measurements and displays them on the
- * listview wigdet.
- *
- * Note: you need to insert the following line before application -tag in
- * the AndroidManifest.xml file
- *  <uses-permission android:name="android.permission.INTERNET" />
- *
- * Author(s): Jarkko Vuori
- * Modification(s):
- *   First version created on 04.02.2017
- *   Clears the positions array before button pressed 15.02.2017
- *   Stores username and password to SharedPreferences 17.02.2017
- */
 package com.example.asd.heaterproject;
 
 import android.app.Activity;
@@ -23,8 +7,8 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,16 +18,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.asd.heaterproject.R;
-
 import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class BatteryActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int    MAXPOSITIONS = 20;
     private static final String PREFERENCEID = "Credentials";
 
@@ -54,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_battery);
 
         // initialize the array so that every position has an object (even it is empty string)
         for (int i = 0; i < positions.length; i++)
@@ -126,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // show it
         alertDialog.show();
-}
+    }
 
     public void onClick(View v) {
         Log.d("USR", "Button pressed");
@@ -140,8 +121,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * so that it does not slow down the user interface (UI)
      */
     private class TalkToThingsee extends AsyncTask<String, Integer, String> {
-        ThingSee thingsee;
-        List<Location> coordinates = new ArrayList<Location>();
+        ThingSee       thingsee;
+        List<Location> battery = new ArrayList<Location>();
 
         @Override
         protected String doInBackground(String... params) {
@@ -153,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 JSONArray events = thingsee.Events(thingsee.Devices(), MAXPOSITIONS);
                 //System.out.println(events);
-                coordinates = thingsee.getPath(events);
+                battery = thingsee.getPath(events);
 
 //                for (Location coordinate: coordinates)
 //                    System.out.println(coordinate);
@@ -172,17 +153,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // now the coordinates variable has those coordinates
                 // elements of these coordinates is the Location object who has
                 // fields for longitude, latitude and time when the position was fixed
-                for (int i = 0; i < coordinates.size(); i++) {
-                    Location loc = coordinates.get(i);
+                for (int i = 0; i < battery.size(); i++) {
+                    Location bat = battery.get(i);
 
-                    positions[i] = (new Date(loc.getTime())) +
-                                   " (" + loc.getLatitude() + "," +
-                                   loc.getLongitude() + ")"; //coordinates.get(i).toString();
+                    positions[i] = (new Date(bat.getTime())) +
+                            " (" + bat.getLatitude() + "," +
+                            bat.getLongitude() + ")"; //coordinates.get(i).toString();
                 }
             } else {
                 // no, tell that to the user and ask a new username/password pair
                 positions[0] = getResources().getString(R.string.no_connection);
-                queryDialog(MainActivity.this, getResources().getString(R.string.info_prompt));
+                queryDialog(BatteryActivity.this, getResources().getString(R.string.info_prompt));
             }
             myAdapter.notifyDataSetChanged();
         }

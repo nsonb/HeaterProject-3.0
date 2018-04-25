@@ -1,35 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
-        <TextView android:id="@+id/introText"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="295dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/introText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:textSize="18dp"
             android:text="This is our launcher acitivity. Select from the choices below:"
-            />
-        <Button android:id="@+id/mainButton"
-            android:layout_height="wrap_content"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/sontrasButton"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/sontrasButton" />
+
+        <Button
+            android:id="@+id/mainButton"
+            android:layout_width="238dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:paddingBottom="16dp"
-            android:layout_gravity="center"
-            android:text="@string/mainButton"
-            />
-        <Button android:id="@+id/sontrasButton"
+            android:text="@string/mainButton" />
+
+        <Button
+            android:id="@+id/batteryButton"
+            android:layout_width="238dp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/sontrasButton"
-            />
+            android:paddingBottom="16dp"
+            android:text="@string/batteryButton" />
+
+        <Button
+            android:id="@+id/environmentButton"
+            android:layout_width="238dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="16dp"
+            android:text="@string/environmentButton" />
     </LinearLayout>
 
 

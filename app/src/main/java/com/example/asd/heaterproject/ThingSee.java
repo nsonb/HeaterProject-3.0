@@ -12,6 +12,7 @@
  * Author(s): Jarkko Vuori
  * Modification(s):
  *   First version created on 04.02.2017
+ *   Fixed timeout issue on 24.04.2018
  */
 package com.example.asd.heaterproject;
 
@@ -26,9 +27,9 @@ import java.util.List;
 import org.json.*;
 
 public class ThingSee {
-    private final static String charset = "UTF-8";
+    private final static String charset = "UTF-8"; 
     private final static String url     = "http://api.thingsee.com/v2";
-
+    
     private URLConnection connection;
     private String        accountAuthUuid;
     private String        accountAuthToken;
@@ -54,7 +55,7 @@ public class ThingSee {
         accountAuthUuid = resp.getString("accountAuthUuid");
         accountAuthToken = resp.getString("accountAuthToken");
     }
-
+    
     /**
      * Send a request to the ThingSee server at the subpath
      * <p>
@@ -69,11 +70,14 @@ public class ThingSee {
         JSONObject     resp     = null;
         InputStream    response = null;
         BufferedReader reader   = null;
-
-
+        
+        
         fConnection = false;
         try {
             connection = new URL(url + path).openConnection();
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);    // Spesify timeouts for the slow ThingSee server
+
             connection.setRequestProperty("Accept-Charset", charset);
             connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
             if (accountAuthToken != null)
@@ -153,7 +157,7 @@ public class ThingSee {
             Log.d("THINGSEE", "ThingseeEvents error " + e);
             throw new Exception("No events");
         }
-
+        
         return (events);
     }
 
@@ -188,7 +192,7 @@ public class ThingSee {
         try {
             for (int i = 0; i < events.length(); i++) {
                 JSONObject event = events.getJSONObject(i);
-                Location   loc   = new Location("hey");
+                Location   loc   = new Location("ThingseeONE");
 
                 loc.setTime(event.getLong("timestamp"));
                 k = 0;
@@ -220,22 +224,22 @@ public class ThingSee {
         } catch (Exception e) {
             throw new Exception("No coordinates");
         }
-
+        
         return coordinates;
     }
-
+    
     @Override
     public String toString() {
         String s;
-
+        
         if (fConnection)
             s = "Uuid: " + accountAuthUuid + "\nToken: " + accountAuthToken;
         else
             s = "Not authenticated";
-
+        
         return (s);
     }
-
+    
     /**
      * Convert events to string
      * <p>

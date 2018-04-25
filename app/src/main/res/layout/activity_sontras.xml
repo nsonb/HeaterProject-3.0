@@ -17,6 +17,12 @@
             android:padding="16dp"
             android:text="So far, this is an empty activity."
             />
+        <Button android:id="@+id/openMapButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/openMapButton"
+            />
         <Button android:id="@+id/goBackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

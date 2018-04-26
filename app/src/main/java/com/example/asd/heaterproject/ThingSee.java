@@ -27,10 +27,10 @@ import java.util.List;
 import org.json.*;
 
 public class ThingSee {
-    private final static String charset = "UTF-8"; 
+    private final static String charset = "UTF-8";
     private final static String url     = "http://api.thingsee.com/v2";
-    
-    private URLConnection connection;
+
+    //private URLConnection connection;
     private String        accountAuthUuid;
     private String        accountAuthToken;
     private Boolean       fConnection;
@@ -55,7 +55,7 @@ public class ThingSee {
         accountAuthUuid = resp.getString("accountAuthUuid");
         accountAuthToken = resp.getString("accountAuthToken");
     }
-    
+
     /**
      * Send a request to the ThingSee server at the subpath
      * <p>
@@ -67,32 +67,33 @@ public class ThingSee {
      * @throws Exception Gives an exception with text information if there was an error
      */
     private JSONObject getThingSeeObject(JSONObject request, String path) throws Exception {
-        JSONObject     resp     = null;
-        InputStream    response = null;
-        BufferedReader reader   = null;
-        
-        
+        HttpURLConnection connection = null;
+        JSONObject        resp     = null;
+
         fConnection = false;
         try {
-            connection = new URL(url + path).openConnection();
+            connection = (HttpURLConnection) new URL(url + path).openConnection();
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);    // Spesify timeouts for the slow ThingSee server
-
             connection.setRequestProperty("Accept-Charset", charset);
             connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
             if (accountAuthToken != null)
                 connection.setRequestProperty("Authorization", "Bearer " + accountAuthToken);
 
             // send a request (if needed)
             if (request != null) {
                 connection.setDoOutput(true);   // Triggers HTTP POST request
+                connection.setChunkedStreamingMode(0);
                 OutputStream output = connection.getOutputStream();
                 output.write(request.toString().getBytes(charset));
+                output.flush();
             }
-
+            int responseCode = connection.getResponseCode();
+            if (responseCode != 200)
+                throw new Exception("Bad responce code " + responseCode);
             // wait for the reply
-            response = connection.getInputStream();
-            reader = new BufferedReader(new InputStreamReader(response));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder out = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -103,13 +104,8 @@ public class ThingSee {
             resp = new JSONObject(out.toString());
             fConnection = true;
         } finally {
-            // ensure that streams are closed in all situations
-            try {
-                if (response != null)
-                    response.close();
-                if (reader != null)
-                    reader.close();
-            } catch (IOException ioe) {}
+            if (connection != null)
+                connection.disconnect();
         }
 
         return (resp);
@@ -133,6 +129,7 @@ public class ThingSee {
             Log.d("THINGSEE", "No Thingsee device");
             item = null;
         }
+
         return (item);
     }
 
@@ -157,7 +154,7 @@ public class ThingSee {
             Log.d("THINGSEE", "ThingseeEvents error " + e);
             throw new Exception("No events");
         }
-        
+
         return (events);
     }
 
@@ -224,22 +221,22 @@ public class ThingSee {
         } catch (Exception e) {
             throw new Exception("No coordinates");
         }
-        
+
         return coordinates;
     }
-    
+
     @Override
     public String toString() {
         String s;
-        
+
         if (fConnection)
             s = "Uuid: " + accountAuthUuid + "\nToken: " + accountAuthToken;
         else
             s = "Not authenticated";
-        
+
         return (s);
     }
-    
+
     /**
      * Convert events to string
      * <p>

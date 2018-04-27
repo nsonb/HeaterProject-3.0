@@ -20,39 +20,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="This is our launcher acitivity. Select from the choices below:"
+            android:text="This is our main menu. Select from the choices below:"
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/sontrasButton"
+            android:id="@+id/indoorsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/sontrasButton" />
+            android:text="Indoors" />
 
         <Button
-            android:id="@+id/mainButton"
-            android:layout_width="238dp"
+            android:id="@+id/hikingButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingBottom="16dp"
-            android:text="@string/mainButton" />
+            android:text="Hiking" />
 
-        <Button
-            android:id="@+id/batteryButton"
-            android:layout_width="238dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingBottom="16dp"
-            android:text="@string/batteryButton" />
-
-        <Button
-            android:id="@+id/environmentButton"
-            android:layout_width="238dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingBottom="16dp"
-            android:text="@string/environmentButton" />
     </LinearLayout>
 
 

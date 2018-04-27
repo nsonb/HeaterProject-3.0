@@ -18,36 +18,23 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         TextView intro = (TextView) findViewById(R.id.introText);
 
         // find buttons
-        Button mainButton = (Button)findViewById(R.id.mainButton);
-        mainButton.setOnClickListener(this);
-        Button sontrasButton = (Button)findViewById(R.id.sontrasButton);
-        sontrasButton.setOnClickListener(this);
-        Button batteryButton = (Button)findViewById(R.id.batteryButton);
-        batteryButton.setOnClickListener(this);
-        Button environmentButton = (Button)findViewById(R.id.environmentButton);
-        environmentButton.setOnClickListener(this);
+        Button indoorsButton = (Button)findViewById(R.id.indoorsButton);
+        indoorsButton.setOnClickListener(this);
+        Button hikingButton = (Button)findViewById(R.id.hikingButton);
+        hikingButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.mainButton:
-                Intent main = new Intent(this, MainActivity.class);
-                startActivity(main);
+            case R.id.indoorsButton:
+                Intent indoors = new Intent(this, Indoors.class);
+                startActivity(indoors);
                 break;
-            case R.id.sontrasButton:
-                Intent sontrasTest = new Intent(this, SontrasTestActivity.class);
-                startActivity(sontrasTest);
-                break;
-            case R.id.batteryButton:
-                Intent battery = new Intent(this, BatteryActivity.class);
-                startActivity(battery);
-                break;
-            case R.id.environmentButton:
-                Intent environment = new Intent(this, EnvironmentActivity.class);
-                startActivity(environment);
+            case R.id.hikingButton:
+                Intent hiking = new Intent(this, Hiking.class);
+                startActivity(hiking);
                 break;
         }
-
     }
 }

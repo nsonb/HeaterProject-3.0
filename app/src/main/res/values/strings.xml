@@ -3,11 +3,17 @@
     <string name="prompt">No credentials set, give Thingsee username and password</string>
     <string name="info_prompt">Invalid username/password or no connection to Thingsee, give Thingsee username and password</string>
     <string name="no_connection">No connection to Thingsee</string>
-    <string name="mainButton">Go to Main activity</string>
+
     <string name="sontrasButton">Go to Sontra\'s test activity</string>
     <string name="goBackButton">Go back</string>
     <string name="openMapButton">Open Google Maps</string>
     <string name="title_activity_maps">Map</string>
+
+
+    <string name="back">BACK</string>
+
+
+    <string name="mainButton">Go to Main activity</string>
     <string name="batteryButton">Go to battery activity</string>
     <string name="environmentButton">Go to environment activity</string>
 

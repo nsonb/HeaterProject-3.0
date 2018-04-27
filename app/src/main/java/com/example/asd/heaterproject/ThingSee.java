@@ -73,8 +73,8 @@ public class ThingSee {
         fConnection = false;
         try {
             connection = (HttpURLConnection) new URL(url + path).openConnection();
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);    // Spesify timeouts for the slow ThingSee server
+            connection.setConnectTimeout(5500);
+            connection.setReadTimeout(5500);    // Spesify timeouts for the slow ThingSee server
             connection.setRequestProperty("Accept-Charset", charset);
             connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
             connection.setRequestProperty("User-Agent", "Mozilla/5.0");

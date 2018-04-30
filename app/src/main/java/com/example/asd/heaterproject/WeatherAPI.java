@@ -10,10 +10,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-// a sync task that makes an API call
+// an async task that makes an API call
 public class WeatherAPI extends AsyncTask<String, Void, String>{
 
-private String result;
+    private String result;
 
     // this is the boring stuff
     @Override

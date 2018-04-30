@@ -30,12 +30,12 @@
             android:paddingBottom="16dp"
             android:text="@string/mainButton" />
 
-        <ImageButton
+        <Button
             android:id="@+id/batteryButton"
-            android:layout_width="81dp"
-            android:layout_height="81dp"
+            android:layout_width="238dp"
+            android:layout_height="wrap_content"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/battery"
+            android:text="@string/batteryButton"
             android:layout_gravity="center"
             />
 

@@ -21,7 +21,7 @@ public class Hiking extends AppCompatActivity implements View.OnClickListener {
         // find buttons
         Button mainButton = (Button)findViewById(R.id.mainButton);
         mainButton.setOnClickListener(this);
-        ImageButton batteryButton = (ImageButton)findViewById(R.id.batteryButton);
+        Button batteryButton = (Button)findViewById(R.id.batteryButton);
         batteryButton.setOnClickListener(this);
         Button environmentButton = (Button)findViewById(R.id.environmentButton);
         environmentButton.setOnClickListener(this);

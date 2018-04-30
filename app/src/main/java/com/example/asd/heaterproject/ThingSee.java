@@ -73,8 +73,8 @@ public class ThingSee {
         fConnection = false;
         try {
             connection = (HttpURLConnection) new URL(url + path).openConnection();
-            connection.setConnectTimeout(5500);
-            connection.setReadTimeout(5500);    // Spesify timeouts for the slow ThingSee server
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);    // Spesify timeouts for the slow ThingSee server
             connection.setRequestProperty("Accept-Charset", charset);
             connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
             connection.setRequestProperty("User-Agent", "Mozilla/5.0");
@@ -182,6 +182,7 @@ public class ThingSee {
      * @return        List of Location objects (coordinates), empty if there are no coordinates available
      * @throws        Exception Gives an exception with text information if there was an error
      */
+
     public List getPath(JSONArray events) throws Exception {
         List   coordinates = new ArrayList();
         int    k;
@@ -201,12 +202,12 @@ public class ThingSee {
 
 
                     switch (senseID) {
-                        case GROUP_LOCATION | PROPERTY1:
+                        case GROUP_ENVIRONMENT | PROPERTY1:
                             loc.setLatitude(value);
                             k++;
                             break;
 
-                        case GROUP_LOCATION | PROPERTY2:
+                        case GROUP_ENVIRONMENT | PROPERTY2:
                             loc.setLongitude(value);
                             k++;
                             break;
@@ -225,6 +226,58 @@ public class ThingSee {
         return coordinates;
     }
 
+    /**
+     * Obtain environment data from the thingsee cloud server
+     *
+     * @param events Device JSON description (given by Devices() method)
+     * @return       List of Location objects (coordinates), empty if there are no coordinates available
+     * @throws       Exception Gives an exception with text information if there was an error
+     */
+
+    public List getEnvironment(JSONArray events) throws Exception {
+        List   conditions = new ArrayList();
+        int    k;
+
+        try {
+            for (int i = 0; i < events.length(); i++) {
+                JSONObject event = events.getJSONObject(i);
+                Environment environment = new Environment("ThingseeONE");
+
+                environment.setTime(event.getLong("timestamp"));
+                k = 0;
+                JSONArray senses = event.getJSONObject("cause").getJSONArray("senses");
+                for (int j = 0; j < senses.length(); j++) {
+                    JSONObject sense   = senses.getJSONObject(j);
+                    int        senseID = Integer.decode(sense.getString("sId"));
+                    double     value   = sense.getDouble("val");
+
+
+                    switch (senseID) {
+                        case GROUP_ENVIRONMENT | PROPERTY1:
+                            environment.setTemperature(value);
+                            k++;
+                            break;
+
+                        case GROUP_ENVIRONMENT | PROPERTY2:
+                            environment.setHumidity(value);
+                            k++;
+                            break;
+                    }
+
+                    if (k == 2) {
+                        conditions.add(environment);
+                        k = 0;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new Exception("No coordinates");
+        }
+
+        return conditions;
+    }
+
+    /*
     @Override
     public String toString() {
         String s;
@@ -236,7 +289,7 @@ public class ThingSee {
 
         return (s);
     }
-
+    */
     /**
      * Convert events to string
      * <p>
@@ -245,6 +298,7 @@ public class ThingSee {
      * @param  events Events in JSON format
      * @return        Events in string format
      */
+    /*
     public String toString(JSONArray events) {
         StringBuilder s = new StringBuilder();
         String        ss;
@@ -270,4 +324,5 @@ public class ThingSee {
 
         return ss;
     }
+    */
 }

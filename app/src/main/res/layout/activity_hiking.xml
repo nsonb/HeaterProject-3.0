@@ -30,13 +30,14 @@
             android:paddingBottom="16dp"
             android:text="@string/mainButton" />
 
-        <Button
+        <ImageButton
             android:id="@+id/batteryButton"
-            android:layout_width="238dp"
-            android:layout_height="wrap_content"
+            android:layout_width="81dp"
+            android:layout_height="81dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/battery"
             android:layout_gravity="center"
-            android:paddingBottom="16dp"
-            android:text="@string/batteryButton" />
+            />
 
         <Button
             android:id="@+id/environmentButton"
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/back" />
+            android:text="@string/goBackButton" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

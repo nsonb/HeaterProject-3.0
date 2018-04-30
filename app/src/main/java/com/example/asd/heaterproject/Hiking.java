@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Hiking extends AppCompatActivity implements View.OnClickListener {
@@ -20,7 +21,7 @@ public class Hiking extends AppCompatActivity implements View.OnClickListener {
         // find buttons
         Button mainButton = (Button)findViewById(R.id.mainButton);
         mainButton.setOnClickListener(this);
-        Button batteryButton = (Button)findViewById(R.id.batteryButton);
+        ImageButton batteryButton = (ImageButton)findViewById(R.id.batteryButton);
         batteryButton.setOnClickListener(this);
         Button environmentButton = (Button)findViewById(R.id.environmentButton);
         environmentButton.setOnClickListener(this);

@@ -9,13 +9,23 @@ import android.widget.TextView;
 
 public class SontrasTestActivity extends AppCompatActivity implements View.OnClickListener {
 
+    static TextView location;
+    static TextView weatherDescription;
+    static TextView outdoorTemperature;
+    static TextView outdoorHumidity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sontras);
 
-        // find text view
+        // find text views
         TextView intro = (TextView) findViewById(R.id.textView1);
+        TextView weatherIntro = (TextView) findViewById(R.id.textView2);
+        location = (TextView) findViewById(R.id.placeName);
+        weatherDescription = (TextView) findViewById(R.id.weatherDescription);
+        outdoorTemperature = (TextView) findViewById(R.id.outdoorTemp);
+        outdoorHumidity = (TextView) findViewById(R.id.outdoorHumidity);
 
         // find buttons
         Button goBack = (Button) findViewById(R.id.goBackButton);
@@ -23,7 +33,12 @@ public class SontrasTestActivity extends AppCompatActivity implements View.OnCli
         goBack.setOnClickListener(this);
         openMap.setOnClickListener(this);
 
-        intro.setText("Now with a Google Maps activity");
+        // create an instance of the weather API class and call its execute
+        WeatherAPI gibWeather = new WeatherAPI();
+        gibWeather.execute("http://api.openweathermap.org/data/2.5/weather?lat=60.221456&lon=24.805634&appid=41bc4335b5c44b26947871ea435a4a49");
+
+        // change some strings
+        intro.setText("Now with Google Maps and OpenWeatherMap weather.");
     }
 
     @Override

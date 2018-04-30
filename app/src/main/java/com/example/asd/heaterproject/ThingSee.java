@@ -202,12 +202,12 @@ public class ThingSee {
 
 
                     switch (senseID) {
-                        case GROUP_ENVIRONMENT | PROPERTY1:
+                        case GROUP_LOCATION | PROPERTY1:
                             loc.setLatitude(value);
                             k++;
                             break;
 
-                        case GROUP_ENVIRONMENT | PROPERTY2:
+                        case GROUP_LOCATION | PROPERTY2:
                             loc.setLongitude(value);
                             k++;
                             break;

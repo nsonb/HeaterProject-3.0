@@ -24,28 +24,40 @@
 
         <Button
             android:id="@+id/mainButton"
-            android:layout_width="238dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingBottom="16dp"
             android:text="@string/mainButton" />
 
         <Button
-            android:id="@+id/batteryButton"
-            android:layout_width="238dp"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:text="@string/batteryButton"
-            android:layout_gravity="center"
-            />
-
-        <Button
             android:id="@+id/environmentButton"
-            android:layout_width="238dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingBottom="16dp"
             android:text="@string/environmentButton" />
+
+        <Button
+            android:id="@+id/graphButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/graphButton" />
+
+        <Button android:id="@+id/distanceButton"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:text="Address"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/batteryButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:text="@string/batteryButton"
+            android:layout_gravity="center" />
 
         <Button
             android:id="@+id/backButton"

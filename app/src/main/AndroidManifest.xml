@@ -66,6 +66,8 @@
         <activity android:name=".BatteryActivity" />
         <activity android:name=".Indoors" />
         <activity android:name=".Hiking" />
+        <activity android:name=".Graph" />
+        <activity android:name=".Distance"></activity>
     </application>
 
 </manifest>

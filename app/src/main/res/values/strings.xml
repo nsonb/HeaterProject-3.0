@@ -13,8 +13,10 @@
     <string name="back">BACK</string>
 
 
-    <string name="mainButton">Go to Main activity</string>
-    <string name="batteryButton">Go to battery activity</string>
-    <string name="environmentButton">Go to environment activity</string>
+    <string name="mainButton">Coordinates</string>
+    <string name="batteryButton">Battery</string>
+    <string name="environmentButton">Environment</string>
+    <string name="graphButton">See graph</string>
+    <string name="distanceResult">Distance result</string>
 
 </resources>

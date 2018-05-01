@@ -69,5 +69,4 @@
         <activity android:name=".Graph" />
         <activity android:name=".Distance"></activity>
     </application>
-
 </manifest>

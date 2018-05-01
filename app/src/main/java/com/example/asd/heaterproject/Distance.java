@@ -46,6 +46,7 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
         Geocoder gc=new Geocoder(getApplicationContext());
         StringBuilder builder=new StringBuilder();
         List<Address>addresses;
+
         try {
             /*addresses= gc.getFromLocation(latitude,longitude,1);//here we pass lat long and set the max return value 1
             if (addresses.size()>0){

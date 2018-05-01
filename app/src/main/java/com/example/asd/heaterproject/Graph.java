@@ -17,9 +17,9 @@ public class Graph extends AppCompatActivity {
     private static final Random RANDOM = new Random();
     private LineGraphSeries<DataPoint> series;
     private int lastX = 0;
+
     public TextView currentAlt;
     public String altitude;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

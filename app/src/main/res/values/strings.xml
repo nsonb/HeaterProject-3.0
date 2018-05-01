@@ -17,4 +17,6 @@
     <string name="batteryButton">Go to battery activity</string>
     <string name="environmentButton">Go to environment activity</string>
 
+    <string name="battery">Battery is here</string>
+
 </resources>

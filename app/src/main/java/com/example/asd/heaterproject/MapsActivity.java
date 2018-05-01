@@ -1,5 +1,7 @@
 package com.example.asd.heaterproject;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -13,6 +15,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+
+    //name for shared preference storing lat long data
+    private static final String LOCATIONID = "LatLong";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
         /*
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
@@ -44,8 +50,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         */
         // Add a marker in Leppävaara and move the camera
-        LatLng metropoliaCampus = new LatLng(60.221456, 24.805634);
-        mMap.addMarker(new MarkerOptions().position(metropoliaCampus).title("Marker at Metropolia"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(metropoliaCampus, 15));
+        SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+        double latitude = Double.valueOf(prefGet.getString("latitude",""));
+        double longitude = Double.valueOf(prefGet.getString("longitude",""));
+        LatLng metropoliaCampus = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(metropoliaCampus).title("Marker at " + latitude + ", " + longitude));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(metropoliaCampus, 15));
     }
 }

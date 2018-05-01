@@ -134,7 +134,7 @@ public class BatteryActivity extends AppCompatActivity implements View.OnClickLi
 
                 JSONArray events = thingsee.Events(thingsee.Devices(), MAXPOSITIONS);
                 //System.out.println(events);
-                battery = thingsee.getPath(events);
+                //battery = thingsee.getPath(events);
 
 //                for (Location coordinate: coordinates)
 //                    System.out.println(coordinate);

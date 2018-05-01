@@ -65,7 +65,7 @@
         <activity android:name=".EnvironmentActivity" />
         <activity android:name=".BatteryActivity" />
         <activity android:name=".Indoors" />
-        <activity android:name=".Hiking"></activity>
+        <activity android:name=".Hiking" />
     </application>
 
 </manifest>

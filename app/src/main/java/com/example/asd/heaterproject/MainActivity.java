@@ -47,9 +47,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int    MAXPOSITIONS = 20;
     private static final String PREFERENCEID = "Credentials";
 
+    //name for shared preference storing lat long data
+    private static final String LOCATIONID = "LatLong";
+
     private String               username, password;
     private String[]             positions = new String[MAXPOSITIONS];
+    private String[]             enCondition = new String[MAXPOSITIONS];
     private ArrayAdapter<String> myAdapter;
+//    private ArrayAdapter<String> myEnAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +64,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // initialize the array so that every position has an object (even it is empty string)
         for (int i = 0; i < positions.length; i++)
             positions[i] = "";
+        for (int i = 0; i < enCondition.length; i++)
+            enCondition[i] = "";
 
         // setup the adapter for the array
         myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, positions);
+//        myEnAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, enCondition);
 
         // then connect it to the list in application's layout
         ListView listView = (ListView) findViewById(R.id.mylist);
+//        listView.setAdapter(myEnAdapter);
         listView.setAdapter(myAdapter);
+
+
 
         // setup the button event listener to receive onClick events
         ((Button)findViewById(R.id.mybutton)).setOnClickListener(this);
@@ -77,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (username.length() == 0 || password.length() == 0)
             // no, ask them from the user
             queryDialog(this, getResources().getString(R.string.prompt));
+
+
     }
 
     private void queryDialog(Context context, String msg) {
@@ -86,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
-        // set prompts.xml to alertdialog builder
+        // set prompts.xml to alert dialog builder
         alertDialogBuilder.setView(promptsView);
 
         final TextView dialogMsg      = (TextView) promptsView.findViewById(R.id.textViewDialogMsg);
@@ -142,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private class TalkToThingsee extends AsyncTask<String, Integer, String> {
         ThingSee thingsee;
         List<Location> coordinates = new ArrayList<Location>();
+        List<Environment> conditions = new ArrayList<Environment>();
 
         @Override
         protected String doInBackground(String... params) {
@@ -154,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 JSONArray events = thingsee.Events(thingsee.Devices(), MAXPOSITIONS);
                 //System.out.println(events);
                 coordinates = thingsee.getPath(events);
+                conditions = thingsee.getEnvironment(events);
 
 //                for (Location coordinate: coordinates)
 //                    System.out.println(coordinate);
@@ -172,19 +187,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // now the coordinates variable has those coordinates
                 // elements of these coordinates is the Location object who has
                 // fields for longitude, latitude and time when the position was fixed
+
                 for (int i = 0; i < coordinates.size(); i++) {
+
                     Location loc = coordinates.get(i);
+                    //shared preference to put the latest lat long into
+                    SharedPreferences prefPut = getSharedPreferences (LOCATIONID, Activity.MODE_PRIVATE);
 
                     positions[i] = (new Date(loc.getTime())) +
                                    " (" + loc.getLatitude() + "," +
                                    loc.getLongitude() + ")"; //coordinates.get(i).toString();
+
+                    //put the latest lat long into the preference
+                    SharedPreferences.Editor prefEditor = prefPut.edit();
+                    prefEditor.putString("timestamp", String.valueOf(loc.getTime()));
+                    prefEditor.putString("latitude", String.valueOf(loc.getLatitude()));
+                    prefEditor.putString("longitude", String.valueOf(loc.getLongitude()));
+                    prefEditor.commit();
                 }
+
+                for (int i = 0; i < conditions.size(); i++) {
+                    Environment environment = conditions.get(i);
+
+                    enCondition[i] = (new Date(environment.getTime())) + "(Temperature: "
+                                     + environment.getTemperature() + ",Humidity: "
+                                     + environment.getHumidity()+ "%)";
+
+                }
+
             } else {
                 // no, tell that to the user and ask a new username/password pair
-                positions[0] = getResources().getString(R.string.no_connection);
+                SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+                positions[0] = "(" + prefGet.getString("latitude","") + "," +
+                                prefGet.getString("longitude","") + ")";
+//                positions[0] = getResources().getString(R.string.no_connection);
+//                enCondition[0] = getResources().getString(R.string.no_connection);
                 queryDialog(MainActivity.this, getResources().getString(R.string.info_prompt));
             }
             myAdapter.notifyDataSetChanged();
+//            myEnAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -192,7 +233,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // first clear the previous entries (if they exist)
             for (int i = 0; i < positions.length; i++)
                 positions[i] = "";
+//            for (int i = 0; i< enCondition.length; i++)
+//                enCondition[i] = "";
             myAdapter.notifyDataSetChanged();
+//            myEnAdapter.notifyDataSetChanged();
         }
 
         @Override

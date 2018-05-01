@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Graph">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/currentText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50px"
+            android:layout_marginTop="50px"
+            android:gravity="left"
+            android:text="This is the current longitude and latitude:" />
+
+        <TextView
+            android:id="@+id/currentAlt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/currentText"
+            android:layout_marginHorizontal="50px"
+            android:layout_marginTop="50px"
+            android:gravity="center_horizontal"
+            android:text="@string/distanceResult" />
+
+        <TextView
+            android:id="@+id/introText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/currentAlt"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="50dp"
+            android:text="Altitude graph:"
+            android:textSize="18sp" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/introText"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

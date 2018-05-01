@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Distance">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/introText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The current longitude/latitude and address:"
+            android:gravity="left"
+            android:layout_marginTop="50px"
+            android:layout_marginHorizontal="50px"/>
+
+        <TextView
+            android:id="@+id/currentLong"
+            android:layout_below="@+id/introText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/distanceResult"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50px" />
+
+        <TextView
+            android:id="@+id/currentLat"
+            android:layout_below="@+id/currentLong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/distanceResult"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/currentLoc"
+            android:layout_below="@+id/currentLat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="location"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/distanceText"
+            android:layout_below="@+id/currentLoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is the total travelled distance:"
+            android:gravity="left"
+            android:layout_marginTop="50px"
+            android:layout_marginHorizontal="50px"/>
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_below="@+id/distanceText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/distanceResult"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50px"
+            android:layout_marginHorizontal="50px"/>
+
+        <Button
+            android:id="@+id/backButton"
+            android:text="@string/back"
+            android:layout_below="@+id/distance"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="50px"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

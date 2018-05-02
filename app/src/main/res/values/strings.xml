@@ -7,6 +7,7 @@
     <string name="sontrasButton">Go to Sontra\'s test activity</string>
     <string name="goBackButton">Go back</string>
     <string name="openMapButton">Open Google Maps</string>
+    <string name="forgeDataButton">Forge indoor temp data</string>
     <string name="title_activity_maps">Map</string>
 
 

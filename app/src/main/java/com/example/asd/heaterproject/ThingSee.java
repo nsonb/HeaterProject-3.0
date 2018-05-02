@@ -242,12 +242,10 @@ public class ThingSee {
     public List getEnvironment(JSONArray events) throws Exception {
         List   conditions = new ArrayList();
         int    k;
-
         try {
             for (int i = 0; i < events.length(); i++) {
                 JSONObject event = events.getJSONObject(i);
                 Environment environment = new Environment("ThingseeONE");
-
                 environment.setTime(event.getLong("timestamp"));
                 k = 0;
                 JSONArray senses = event.getJSONObject("cause").getJSONArray("senses");
@@ -280,6 +278,34 @@ public class ThingSee {
         }
 
         return conditions;
+    }
+
+    public double getBattery(JSONArray events) throws Exception {
+        double  batteryLevel = -1;
+        try {
+            for (int i = 0; i < events.length(); i++)
+            {
+                JSONObject event = events.getJSONObject(i);
+                JSONArray senses = event.getJSONObject("cause").getJSONArray("senses");
+                for (int j = 0; j < events.length(); j++)
+                {
+                    JSONObject sense   = senses.getJSONObject(j);
+                    int        senseID = Integer.decode(sense.getString("sId"));
+                    double     value   = sense.getDouble("val");
+
+
+                    if (senseID == (GROUP_ENERGY | PROPERTY2))
+                    {
+                        batteryLevel = value;
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            throw new Exception("No coordinates");
+        }
+
+        return batteryLevel;
     }
 
     /*

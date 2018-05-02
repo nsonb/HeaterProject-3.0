@@ -27,26 +27,16 @@ import java.util.List;
 public class BatteryActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int    MAXPOSITIONS = 20;
     private static final String PREFERENCEID = "Credentials";
-
     private String               username, password;
-    private String[]             positions = new String[MAXPOSITIONS];
-    private ArrayAdapter<String> myAdapter;
+    TextView batteryView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battery);
+        batteryView = findViewById(R.id.battery);
 
         // initialize the array so that every position has an object (even it is empty string)
-        for (int i = 0; i < positions.length; i++)
-            positions[i] = "";
-
-        // setup the adapter for the array
-        myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, positions);
-
-        // then connect it to the list in application's layout
-        ListView listView = (ListView) findViewById(R.id.mylist);
-        listView.setAdapter(myAdapter);
 
         // setup the button event listener to receive onClick events
         ((Button)findViewById(R.id.mybutton)).setOnClickListener(this);
@@ -121,8 +111,8 @@ public class BatteryActivity extends AppCompatActivity implements View.OnClickLi
      * so that it does not slow down the user interface (UI)
      */
     private class TalkToThingsee extends AsyncTask<String, Integer, String> {
-        ThingSee       thingsee;
-        List<Location> battery = new ArrayList<Location>();
+        ThingSee thingsee;
+        double battery;
 
         @Override
         protected String doInBackground(String... params) {
@@ -131,13 +121,9 @@ public class BatteryActivity extends AppCompatActivity implements View.OnClickLi
             // here we make the request to the cloud server for MAXPOSITION number of coordinates
             try {
                 thingsee = new ThingSee(username, password);
-
                 JSONArray events = thingsee.Events(thingsee.Devices(), MAXPOSITIONS);
                 //System.out.println(events);
-                //battery = thingsee.getPath(events);
-
-//                for (Location coordinate: coordinates)
-//                    System.out.println(coordinate);
+                battery = thingsee.getBattery(events);
                 result = "OK";
             } catch(Exception e) {
                 Log.d("NET", "Communication error: " + e.getMessage());
@@ -147,33 +133,24 @@ public class BatteryActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String result)
+        {
             // check that the background communication with the client was succesfull
-            if (result.equals("OK")) {
-                // now the coordinates variable has those coordinates
-                // elements of these coordinates is the Location object who has
-                // fields for longitude, latitude and time when the position was fixed
-                for (int i = 0; i < battery.size(); i++) {
-                    Location bat = battery.get(i);
-
-                    positions[i] = (new Date(bat.getTime())) +
-                            " (" + bat.getLatitude() + "," +
-                            bat.getLongitude() + ")"; //coordinates.get(i).toString();
-                }
-            } else {
+            if (result.equals("OK"))
+            {
+                batteryView.setText("Battery level is: " + battery);
+            }
+            else {
                 // no, tell that to the user and ask a new username/password pair
-                positions[0] = getResources().getString(R.string.no_connection);
+                batteryView.setText("No signal");
                 queryDialog(BatteryActivity.this, getResources().getString(R.string.info_prompt));
             }
-            myAdapter.notifyDataSetChanged();
         }
 
         @Override
         protected void onPreExecute() {
             // first clear the previous entries (if they exist)
-            for (int i = 0; i < positions.length; i++)
-                positions[i] = "";
-            myAdapter.notifyDataSetChanged();
+            batteryView.setText("");
         }
 
         @Override

@@ -53,10 +53,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add a marker in the last recorded device position and move the camera
         // if shared preferences are empty, default coordinates are at Metropolia campus
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
-        double latitude = Double.valueOf(prefGet.getString("latitude","60.2212543"));
-        double longitude = Double.valueOf(prefGet.getString("longitude","24.8050686"));
+        double latitude = Double.valueOf(prefGet.getString("latitude","0.0"));
+        double longitude = Double.valueOf(prefGet.getString("longitude","0.0"));
         LatLng position = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(position).title("Marker at " + latitude + ", " + longitude));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
     }
 }

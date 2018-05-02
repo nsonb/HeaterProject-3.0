@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ThingSee thingsee;
         List<Location> coordinates = new ArrayList<Location>();
         List<Environment> conditions = new ArrayList<Environment>();
+        List<Double> battery = new ArrayList<>();
 
         @Override
         protected String doInBackground(String... params) {
@@ -169,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //System.out.println(events);
                 coordinates = thingsee.getPath(events);
                 conditions = thingsee.getEnvironment(events);
+//                battery = thingsee.getBattery(events);
 
 //                for (Location coordinate: coordinates)
 //                    System.out.println(coordinate);
@@ -192,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     Location loc = coordinates.get(i);
                     //shared preference to put the latest lat long into
-                    SharedPreferences prefPut = getSharedPreferences ("LOCATIONID", Activity.MODE_PRIVATE);
+                    SharedPreferences prefPut = getSharedPreferences (LOCATIONID, Activity.MODE_PRIVATE);
 
                     positions[i] = (new Date(loc.getTime())) +
                                    " (" + loc.getLatitude() + "," +
@@ -209,13 +211,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 for (int i = 0; i < conditions.size(); i++) {
                     Environment environment = conditions.get(i);
+                    //put temperature and humidity into a shared preference
+                    SharedPreferences prefPut = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
 
                     enCondition[i] = (new Date(environment.getTime())) + "(Temperature: "
                                      + environment.getTemperature() + ",Humidity: "
                                      + environment.getHumidity()+ "%)";
+                    SharedPreferences.Editor prefEditor = prefPut.edit();
+                    prefEditor.putString("temperature", String.valueOf(environment.getTemperature()));
+                    prefEditor.putString("humidity", String.valueOf(environment.getHumidity()));
+                    prefEditor.putString("battery" , String.valueOf(environment.getBattery()));
+                    prefEditor.commit();
 
                 }
-
+/*
+                    SharedPreferences prefPut = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor prefEditor = prefPut.edit();
+                    prefEditor.putString("battery", String.valueOf(battery));
+                    prefEditor.commit();
+*/
             } else {
                 // no, tell that to the user and ask a new username/password pair
                 SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
@@ -234,8 +248,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // first clear the previous entries (if they exist)
             for (int i = 0; i < positions.length; i++)
                 positions[i] = "";
-//            for (int i = 0; i< enCondition.length; i++)
-//                enCondition[i] = "";
+            for (int i = 0; i< enCondition.length; i++)
+                enCondition[i] = "";
             myAdapter.notifyDataSetChanged();
 //            myEnAdapter.notifyDataSetChanged();
         }

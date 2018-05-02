@@ -12,7 +12,8 @@
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="295dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/mountain">
 
         <TextView
             android:id="@+id/introText"
@@ -20,36 +21,43 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="This is our hiking acitivity. Select from the choices below:"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            />
 
         <Button
             android:id="@+id/mainButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingBottom="16dp"
-            android:text="@string/mainButton" />
+            android:text="@string/mainButton"
+            android:background="@color/hikingBackground0"
+            android:layout_margin="10dp"/>
 
         <Button
             android:id="@+id/environmentButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingBottom="16dp"
-            android:text="@string/environmentButton" />
+            android:text="@string/environmentButton"
+            android:background="@color/hikingBackground"
+            android:layout_margin="10dp"/>
 
         <Button
             android:id="@+id/graphButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/graphButton" />
+            android:text="@string/graphButton"
+            android:background="@color/hikingBackground1"
+            android:layout_margin="10dp"/>
 
         <Button android:id="@+id/distanceButton"
             android:layout_height="wrap_content"
             android:layout_width="150dp"
             android:text="Address"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:background="@color/hikingBackground2"
+            android:layout_margin="10dp"/>
 
         <Button
             android:id="@+id/batteryButton"
@@ -57,14 +65,17 @@
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
             android:text="@string/batteryButton"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:background="@color/hikingBackground3"/>
 
         <Button
             android:id="@+id/backButton"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/goBackButton" />
+            android:text="@string/goBackButton"
+            android:background="@color/hikingBackground4"
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 

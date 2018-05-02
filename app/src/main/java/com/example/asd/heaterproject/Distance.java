@@ -16,8 +16,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import static java.lang.Math.cos;
+import static java.lang.Math.sqrt;
+
 public class Distance extends AppCompatActivity implements View.OnClickListener {
     public Double latitude, longitude;
+    public Double calculationLat, calculationLong, calculation;
     public String location;
 
     @Override
@@ -48,17 +52,6 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
         List<Address>addresses;
 
         try {
-            /*addresses= gc.getFromLocation(latitude,longitude,1);//here we pass lat long and set the max return value 1
-            if (addresses.size()>0){
-                Address address=addresses.get(0);//i fetched the result from the list
-                for(int i=0;i<address.getMaxAddressLineIndex();i++){//looping into the max address line contain the result
-                    builder.append(address.getAddressLine(i)+"\n"); //appending the addressline of the given latitude longitude
-                }
-            }
-
-            Toast.makeText(Distance.this,builder.toString(),Toast.LENGTH_LONG).show();//showing the address into the toast
-            //to get the most accurate one
-            */
             addresses = gc.getFromLocation(latitude,longitude,1);
 
             String addressStr = addresses.get(0).getAddressLine(0);
@@ -73,6 +66,14 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
         } catch (IOException e) {
             e.printStackTrace();
         }
+            //home as static point:
+        //lat: 60.2215929
+        //long: 24.8050029
+            //Am's as static point:
+        calculationLat = ((latitude - 60.264970)*(40000/360));
+        calculationLong = ((longitude - 24.845408)*((40000*cos(60))/360));
+        calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));
+        distance.setText(String.valueOf(calculation));
     }
 
     @Override

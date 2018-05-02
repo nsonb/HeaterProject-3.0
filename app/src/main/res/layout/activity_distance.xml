@@ -18,7 +18,8 @@
             android:text="The current longitude/latitude and address:"
             android:gravity="left"
             android:layout_marginTop="50px"
-            android:layout_marginHorizontal="50px"/>
+            android:layout_marginHorizontal="50px"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/currentLong"
@@ -46,14 +47,35 @@
             android:gravity="center_horizontal"/>
 
         <TextView
-            android:id="@+id/distanceText"
+            android:id="@+id/homeText"
             android:layout_below="@+id/currentLoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="This is the total travelled distance:"
+            android:text="Home address:"
             android:gravity="left"
             android:layout_marginTop="50px"
-            android:layout_marginHorizontal="50px"/>
+            android:layout_marginHorizontal="50px"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/homeLoc"
+            android:layout_below="@+id/homeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vanha maantie 6, 02650, Finland"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50px" />
+
+        <TextView
+            android:id="@+id/distanceText"
+            android:layout_below="@+id/homeLoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is the total distance:"
+            android:gravity="left"
+            android:layout_marginTop="50px"
+            android:layout_marginHorizontal="50px"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/distance"

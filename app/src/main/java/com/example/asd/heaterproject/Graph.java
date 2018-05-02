@@ -27,17 +27,22 @@ public class Graph extends AppCompatActivity {
         setContentView(R.layout.activity_graph);
 
         SharedPreferences altValue = getSharedPreferences("LOCATIONID", Activity.MODE_PRIVATE);
-        altitude = altValue.getString("altitude", "Not found");
+        altitude = altValue.getString("altitude", "0");
         TextView currentAlt = (TextView) findViewById(R.id.currentAlt);
         currentAlt.setText(String.valueOf(altitude));
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
-                new DataPoint(60, 24),
-                new DataPoint(61, 25),
-                new DataPoint(62, 26),
-                new DataPoint(63, 25),
-                new DataPoint(67, 24)
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                new DataPoint(0, 26),
+                new DataPoint(10, 23),
+                new DataPoint(20, 22),
+                new DataPoint(30, 33),
+                new DataPoint(40, 37),
+                new DataPoint(50, 40),
+                new DataPoint(60, 38),
+                new DataPoint(70, 32),
+                new DataPoint(80, 28),
+                new DataPoint(90, 30)
         });
         graph.addSeries(series);
     }

@@ -9,13 +9,15 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/hikingBackground3">
 
     <Button android:id="@+id/mybutton"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Request data from the ThingseeONE"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:background="@drawable/rounded0"/>
     <ListView
         android:id="@+id/mylist"
         android:layout_height="wrap_content"

@@ -20,19 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="This is our hiking acitivity. Select from the choices below:"
+            android:text="Welcome to the hiking activity. Please make a selection from the options below:"
             android:textSize="18sp"
             android:textColor="@color/hikingBackground1"
             />
-
-        <Button
-            android:id="@+id/mainButton"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/mainButton"
-            android:background="@drawable/rounded0"
-            android:layout_margin="10dp"/>
 
         <Button
             android:id="@+id/environmentButton"
@@ -40,6 +31,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/environmentButton"
+            android:background="@drawable/rounded0"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/mainButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/mainButton"
             android:background="@drawable/rounded"
             android:layout_margin="10dp"/>
 

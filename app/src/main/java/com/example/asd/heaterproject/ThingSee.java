@@ -218,7 +218,7 @@ public class ThingSee {
                             break;
                     }
 
-                    if (k == 3) {
+                    if (k == 2) {
                         coordinates.add(loc);
                         k = 0;
                     }

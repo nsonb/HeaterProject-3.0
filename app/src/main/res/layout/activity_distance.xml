@@ -17,9 +17,9 @@
             android:layout_height="wrap_content"
             android:text="The current longitude/latitude and address:"
             android:gravity="left"
-            android:textSize="40px"
-            android:layout_marginTop="50px"
-            android:layout_marginHorizontal="50px"
+            android:textSize="20sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginHorizontal="10sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -28,9 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/distanceResult"
-            android:textSize="35px"
+            android:textSize="20sp"
             android:gravity="center_horizontal"
-            android:layout_marginTop="50px" />
+            android:layout_marginTop="10sp" />
 
         <TextView
             android:id="@+id/currentLat"
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/distanceResult"
-            android:textSize="35px"
+            android:textSize="20sp"
             android:gravity="center_horizontal"/>
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Location"
-            android:textSize="35px"
+            android:textSize="20sp"
             android:gravity="center_horizontal"/>
 
         <TextView
@@ -57,9 +57,9 @@
             android:layout_height="wrap_content"
             android:text="Home address:"
             android:gravity="left"
-            android:textSize="40px"
-            android:layout_marginTop="50px"
-            android:layout_marginHorizontal="50px"
+            android:textSize="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginHorizontal="10sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -67,9 +67,10 @@
             android:layout_below="@+id/homeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vanha maantie 6, 02650, Finland"
+            android:text="Raappavuorentie 10, 01600 Vantaa"
             android:gravity="center_horizontal"
-            android:layout_marginTop="50px" />
+            android:layout_marginTop="10sp"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/distanceText"
@@ -78,8 +79,10 @@
             android:layout_height="wrap_content"
             android:text="This is the total distance:"
             android:gravity="left"
-            android:layout_marginTop="50px"
-            android:layout_marginHorizontal="50px"
+            android:layout_marginTop="20sp"
+            android:textSize="20sp"
+
+            android:layout_marginHorizontal="10sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -89,9 +92,9 @@
             android:layout_height="wrap_content"
             android:text="@string/distanceResult"
             android:gravity="center_horizontal"
-            android:textSize="35px"
-            android:layout_marginTop="50px"
-            android:layout_marginHorizontal="50px"/>
+            android:textSize="20sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginHorizontal="10sp"/>
 
         <Button
             android:id="@+id/backButton"
@@ -99,7 +102,7 @@
             android:layout_below="@+id/distance"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="50px"
+            android:layout_margin="20sp"
             android:gravity="center"/>
 
     </RelativeLayout>

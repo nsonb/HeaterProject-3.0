@@ -69,9 +69,9 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
             //home as static point:
         //lat: 60.2215929
         //long: 24.8050029
-            //Am's as static point:
-        calculationLat = ((latitude - 60.264970)*(40000/360));
-        calculationLong = ((longitude - 24.845408)*((40000*cos(60))/360));
+            //Myyrmäen jäähalli as static point:
+        calculationLat = ((latitude - 60.26366729999999)*(40000/360));
+        calculationLong = ((longitude - 24.840160400000065408)*((40000*cos(60))/360));
         calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));
         distance.setText(String.valueOf(calculation));
     }

@@ -65,6 +65,12 @@
             android:paddingBottom="30dp"
             android:text="humidity"
             />
+        <Button android:id="@+id/forgeryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/forgeDataButton"
+            />
         <Button android:id="@+id/goBackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -43,20 +43,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        /*
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        */
-
         // Add a marker in the last recorded device position and move the camera
-        // if shared preferences are empty, default coordinates are at Metropolia campus
+        // if shared preferences are empty, default coordinates are in Inari, Lapland
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
-        double latitude = Double.valueOf(prefGet.getString("latitude","60.2212543"));
-        double longitude = Double.valueOf(prefGet.getString("longitude","24.8050686"));
+        double latitude = Double.valueOf(prefGet.getString("latitude","68.9105231"));
+        double longitude = Double.valueOf(prefGet.getString("longitude","27.0174193"));
         LatLng position = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(position).title("Marker at " + latitude + ", " + longitude));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 5));
     }
 }

@@ -14,6 +14,7 @@ import java.net.URL;
 public class WeatherAPI extends AsyncTask<String, Void, String>{
 
     private String result;
+    public static int tempCelsius;
 
     // this is the boring stuff
     @Override
@@ -55,7 +56,7 @@ public class WeatherAPI extends AsyncTask<String, Void, String>{
             String countryCode = sys.getString("country");
             if(countryCode.equals("FI")) countryCode = "Finland";
             double temperature = Double.parseDouble(main.getString("temp"));
-            int tempCelsius = (int) (temperature -273.15);
+            tempCelsius = (int) (temperature -273.15);
             String humidity = main.getString("humidity");
 
             // weather description is in an array, so a JSON array has to be used

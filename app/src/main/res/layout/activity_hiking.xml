@@ -55,7 +55,7 @@
         <Button android:id="@+id/distanceButton"
             android:layout_height="wrap_content"
             android:layout_width="150dp"
-            android:text="Address"
+            android:text="@string/distanceResult"
             android:layout_gravity="center"
             android:background="@drawable/rounded2"
             android:layout_margin="10dp"/>

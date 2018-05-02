@@ -18,8 +18,18 @@
     <string name="batteryButton">Battery</string>
     <string name="environmentButton">App Info</string>
     <string name="graphButton">Altitude Graph</string>
-    <string name="distanceResult">Distance Travelled</string>
+    <string name="distanceResult">Distance Tracker</string>
 
-    <string name="battery">Battery is here</string>
+    <string name="battery"></string>
+
+
+    <string name="appDescription1">In this application, you are able to check the various altitudes of which you have reached
+        during your hike, the distance you have travelled from home, and the status of the battery.</string>
+    <string name="appDescription2">Please note that while the Distance
+        Tracker does not provide direction, it is to be used as an emergency tool in the case that you become lost and need to
+        know your address/coordinates as well as the amount of kilometers you are from your designated home location.</string>
+    <string name="appDescription3">We are aware that this app needs improvement. While this may only be the prototype stage,
+        we hope in the future that the application can be further developed into a useful, versatile tool. Thank you for
+        downloading!</string>
 
 </resources>

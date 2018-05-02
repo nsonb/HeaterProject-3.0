@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0sp"
+        tools:layout_editor_absoluteY="0sp"
         android:background="@color/hikingBackground3"
         tools:ignore="MissingConstraints">
 
@@ -23,7 +23,8 @@
             android:layout_marginTop="20sp"
             android:textSize="20sp"
             android:gravity="left"
-            android:text="This is the current altitude:" />
+            android:text="This is the current altitude:"
+            android:textColor="@color/hikingTextColor"/>
 
         <TextView
             android:id="@+id/currentAlt"
@@ -34,7 +35,8 @@
             android:layout_marginTop="10sp"
             android:textSize="20sp"
             android:gravity="center_horizontal"
-            android:text="@string/distanceResult" />
+            android:text="@string/distanceResult"
+            android:textColor="@color/hikingTextColor"/>
 
         <TextView
             android:id="@+id/introText"
@@ -44,12 +46,13 @@
             android:layout_centerHorizontal="true"
             android:paddingTop="60sp"
             android:text="Altitude graph:"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="@color/hikingTextColor"/>
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:layout_width="300sp"
+            android:layout_height="200sp"
             android:layout_below="@+id/introText"
             android:layout_centerHorizontal="true" />
 

@@ -17,9 +17,12 @@
         android:layout_width="wrap_content"
         android:text="Request data from the ThingseeONE"
         android:layout_gravity="center"
-        android:background="@color/hikingBackground0"/>
+        android:padding="15sp"
+        android:background="@drawable/rounded0"
+        android:textColor="@color/hikingTextColor"/>
     <ListView
         android:id="@+id/mylist"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:textColor="@color/hikingTextColor"/>
 </LinearLayout>

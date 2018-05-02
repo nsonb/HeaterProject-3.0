@@ -10,76 +10,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="295dp"
+        tools:layout_editor_absoluteX="0sp"
+        tools:layout_editor_absoluteY="295sp"
         tools:ignore="MissingConstraints"
+        android:padding="10sp"
         android:background="@drawable/mountain">
 
         <TextView
             android:id="@+id/introText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="16sp"
             android:text="Welcome to the hiking activity. Please make a selection from the options below:"
-            android:textSize="18sp"
+            android:textSize="20sp"
+            android:textAlignment="center"
             android:textColor="@color/hikingBackground1"
             />
 
         <Button
             android:id="@+id/environmentButton"
-            android:layout_width="150dp"
+            android:layout_width="160sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/environmentButton"
             android:background="@drawable/rounded0"
-            android:layout_margin="10dp"
+            android:layout_margin="10sp"
+            android:textColor="@color/hikingTextColor"
             />
 
         <Button
             android:id="@+id/mainButton"
-            android:layout_width="150dp"
+            android:layout_width="160sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/mainButton"
             android:background="@drawable/rounded"
-            android:layout_margin="10dp"
-            android:elevation="20dp"
+            android:layout_margin="10sp"
+            android:elevation="20sp"
+            android:textColor="@color/hikingTextColor"
             />
 
         <Button
             android:id="@+id/graphButton"
-            android:layout_width="150dp"
+            android:layout_width="160sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/graphButton"
             android:background="@drawable/rounded1"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10sp"
+            android:textColor="@color/hikingTextColor"/>
 
         <Button android:id="@+id/distanceButton"
             android:layout_height="wrap_content"
-            android:layout_width="150dp"
+            android:layout_width="160sp"
             android:text="@string/distanceResult"
             android:layout_gravity="center"
             android:background="@drawable/rounded2"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10sp"
+            android:textColor="@color/hikingTextColor"/>
 
         <Button
             android:id="@+id/batteryButton"
-            android:layout_width="150dp"
+            android:layout_width="160sp"
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
             android:text="@string/batteryButton"
             android:layout_gravity="center"
-            android:background="@drawable/rounded3"/>
+            android:background="@drawable/rounded3"
+            android:textColor="@color/hikingTextColor"/>
 
         <Button
             android:id="@+id/backButton"
-            android:layout_width="150dp"
+            android:layout_width="160sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/goBackButton"
+            android:text="@string/back"
             android:background="@drawable/rounded4"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10sp"
+            android:textColor="@color/hikingTextColor"/>
 
     </LinearLayout>
 

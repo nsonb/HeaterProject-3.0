@@ -211,6 +211,11 @@ public class ThingSee {
                             loc.setLongitude(value);
                             k++;
                             break;
+
+                        case GROUP_LOCATION | PROPERTY3:
+                            loc.setAltitude(value);
+                            k++;
+                            break;
                     }
 
                     if (k == 2) {

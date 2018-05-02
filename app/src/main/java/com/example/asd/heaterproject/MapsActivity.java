@@ -49,12 +49,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         */
-        // Add a marker in Leppävaara and move the camera
+
+        // Add a marker in the last recorded device position and move the camera
+        // if shared preferences are empty, default coordinates are at Metropolia campus
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
-        double latitude = Double.valueOf(prefGet.getString("latitude",""));
-        double longitude = Double.valueOf(prefGet.getString("longitude",""));
-        LatLng metropoliaCampus = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(metropoliaCampus).title("Marker at " + latitude + ", " + longitude));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(metropoliaCampus, 15));
+        double latitude = Double.valueOf(prefGet.getString("latitude","60.2212543"));
+        double longitude = Double.valueOf(prefGet.getString("longitude","24.8050686"));
+        LatLng position = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(position).title("Marker at " + latitude + ", " + longitude));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
     }
 }

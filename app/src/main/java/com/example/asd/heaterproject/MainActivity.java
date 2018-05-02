@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     Location loc = coordinates.get(i);
                     //shared preference to put the latest lat long into
-                    SharedPreferences prefPut = getSharedPreferences (LOCATIONID, Activity.MODE_PRIVATE);
+                    SharedPreferences prefPut = getSharedPreferences ("LOCATIONID", Activity.MODE_PRIVATE);
 
                     positions[i] = (new Date(loc.getTime())) +
                                    " (" + loc.getLatitude() + "," +
@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     prefEditor.putString("timestamp", String.valueOf(loc.getTime()));
                     prefEditor.putString("latitude", String.valueOf(loc.getLatitude()));
                     prefEditor.putString("longitude", String.valueOf(loc.getLongitude()));
+                    prefEditor.putString("altitude", String.valueOf(loc.getAltitude()));
                     prefEditor.commit();
                 }
 

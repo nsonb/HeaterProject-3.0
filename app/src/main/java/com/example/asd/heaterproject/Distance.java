@@ -35,6 +35,7 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
         TextView currentLat = (TextView) findViewById(R.id.currentLat);
         TextView currentLoc = (TextView) findViewById(R.id.currentLoc);
 
+
         // find buttons
         Button backButton = (Button)findViewById(R.id.backButton);
         backButton.setOnClickListener(this);
@@ -72,6 +73,8 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
+        TextView distance = (TextView) findViewById(R.id.distance);
+
         switch (v.getId()){
             case R.id.enterTextButton:
                 EditText inputText = (EditText) findViewById(R.id.inputText);
@@ -90,25 +93,25 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
                         Address addr = geoResults.get(0);
                         inputLat = addr.getLatitude();
                         inputLong = addr.getLongitude();
+
+                        //jäähalli as static point:
+                        //lat: 60.26366729999999
+                        //long: 24.840160400000065408
+                        //Myyrmäen jäähalli as static point:
+                        calculationLat = ((latitude - inputLat)*(40000/360));
+                        calculationLong = ((longitude - inputLong)*((40000*cos(60))/360));
+                        calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));
+
+                        result = String.format("%.3f", calculation);
+                        distance.setText(result + " km");
                     }
                     if (i >= 5){
-                        result = "error";
+                        distance.setText("try again");
                     }
                 } catch (Exception e) {
                     System.out.print(e.getMessage());
                 }
 
-                TextView distance = (TextView) findViewById(R.id.distance);
-                //jäähalli as static point:
-                //lat: 60.26366729999999
-                //long: 24.840160400000065408
-                //Myyrmäen jäähalli as static point:
-                calculationLat = ((latitude - inputLat)*(40000/360));
-                calculationLong = ((longitude - inputLong)*((40000*cos(60))/360));
-                calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));
-
-                result = String.format("%.3f", calculation);
-                distance.setText(result + " km");
                 break;
 
             case R.id.backButton:

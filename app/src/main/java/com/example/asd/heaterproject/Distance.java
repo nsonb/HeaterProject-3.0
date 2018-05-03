@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,7 +23,7 @@ import static java.lang.Math.sqrt;
 public class Distance extends AppCompatActivity implements View.OnClickListener {
     public Double latitude, longitude;
     public Double calculationLat, calculationLong, calculation;
-    public String location;
+    public String location, result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,9 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
         calculationLat = ((latitude - 60.26366729999999)*(40000/360));
         calculationLong = ((longitude - 24.840160400000065408)*((40000*cos(60))/360));
         calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));
-        distance.setText(String.valueOf(calculation));
+
+        result = String.format("%.3f", calculation);
+        distance.setText(result + " km");
     }
 
     @Override

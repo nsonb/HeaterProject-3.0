@@ -56,5 +56,17 @@
             android:layout_below="@+id/introText"
             android:layout_centerHorizontal="true" />
 
+        <Button
+            android:id="@+id/backButton"
+            android:text="@string/back"
+            android:layout_below="@+id/graph"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:gravity="center"
+            android:padding="15sp"
+            android:background="@drawable/rounded0"
+            android:textColor="@color/hikingTextColor"/>
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

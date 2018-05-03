@@ -34,5 +34,6 @@
     <string name="appDescription3">We are aware that this app needs improvement. While this may only be the prototype stage,
         we hope in the future that the application can be further developed into a useful, versatile tool. Thank you for
         downloading!</string>
+    <string name="infoIntro">Welcome to the Hiking portion of this application</string>
 
 </resources>

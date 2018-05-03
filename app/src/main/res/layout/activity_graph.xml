@@ -69,4 +69,5 @@
             android:textColor="@color/hikingTextColor"/>
 
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

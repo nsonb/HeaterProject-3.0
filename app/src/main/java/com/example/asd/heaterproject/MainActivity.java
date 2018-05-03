@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     positions[i] = (new Date(loc.getTime())) +
                                    " (" + loc.getLatitude() + "," +
-                                   loc.getLongitude() + ")"; //coordinates.get(i).toString();
+                                   loc.getLongitude() + "," + loc.getAltitude() + "m)"; //coordinates.get(i).toString();
 
                     //put the latest lat long into the preference
                     SharedPreferences.Editor prefEditor = prefPut.edit();

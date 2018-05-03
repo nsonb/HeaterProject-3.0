@@ -13,7 +13,7 @@
         tools:layout_editor_absoluteX="0sp"
         tools:layout_editor_absoluteY="295sp"
         tools:ignore="MissingConstraints"
-        android:padding="10sp"
+        android:padding="1sp"
         android:background="@drawable/mountain">
 
         <TextView

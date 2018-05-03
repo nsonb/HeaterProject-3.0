@@ -197,8 +197,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     SharedPreferences prefPut = getSharedPreferences ("LOCATIONID", Activity.MODE_PRIVATE);
 
                     positions[i] = (new Date(loc.getTime())) +
-                                   " (" + loc.getLatitude() + "," +
-                                   loc.getLongitude() + "," + loc.getAltitude() + "m)"; //coordinates.get(i).toString();
+                                   " (" + loc.getLatitude() + ", " +
+                                   loc.getLongitude() + ", " + loc.getAltitude() + "m)"; //coordinates.get(i).toString();
 
                     //put the latest lat long into the preference
                     SharedPreferences.Editor prefEditor = prefPut.edit();

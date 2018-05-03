@@ -22,6 +22,8 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         indoorsButton.setOnClickListener(this);
         Button hikingButton = (Button)findViewById(R.id.hikingButton);
         hikingButton.setOnClickListener(this);
+        Button batteryButton = (Button)findViewById(R.id.batteryButton);
+        batteryButton.setOnClickListener(this);
     }
 
     @Override
@@ -34,6 +36,10 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
             case R.id.hikingButton:
                 Intent hiking = new Intent(this, Hiking.class);
                 startActivity(hiking);
+                break;
+            case R.id.batteryButton:
+                Intent battery = new Intent(this, BatteryActivity.class);
+                startActivity(battery);
                 break;
         }
     }

@@ -21,8 +21,6 @@ public class Hiking extends AppCompatActivity implements View.OnClickListener {
         // find buttons
         Button mainButton = (Button)findViewById(R.id.mainButton);
         mainButton.setOnClickListener(this);
-        Button batteryButton = (Button)findViewById(R.id.batteryButton);
-        batteryButton.setOnClickListener(this);
         Button environmentButton = (Button)findViewById(R.id.environmentButton);
         environmentButton.setOnClickListener(this);
         Button graphButton = (Button)findViewById(R.id.graphButton);
@@ -39,10 +37,6 @@ public class Hiking extends AppCompatActivity implements View.OnClickListener {
             case R.id.mainButton:
                 Intent main = new Intent(this, MainActivity.class);
                 startActivity(main);
-                break;
-            case R.id.batteryButton:
-                Intent battery = new Intent(this, BatteryActivity.class);
-                startActivity(battery);
                 break;
             case R.id.environmentButton:
                 Intent environment = new Intent(this, EnvironmentActivity.class);
@@ -61,6 +55,5 @@ public class Hiking extends AppCompatActivity implements View.OnClickListener {
                 startActivity(distance);
                 break;
         }
-
     }
 }

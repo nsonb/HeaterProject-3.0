@@ -47,8 +47,7 @@
             android:background="@drawable/rounded"
             android:layout_margin="10sp"
             android:elevation="20sp"
-            android:textColor="@color/hikingTextColor"
-            />
+            android:textColor="@color/hikingTextColor" />
 
         <Button
             android:id="@+id/graphButton"
@@ -67,16 +66,6 @@
             android:layout_gravity="center"
             android:background="@drawable/rounded2"
             android:layout_margin="10sp"
-            android:textColor="@color/hikingTextColor"/>
-
-        <Button
-            android:id="@+id/batteryButton"
-            android:layout_width="160sp"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:text="@string/batteryButton"
-            android:layout_gravity="center"
-            android:background="@drawable/rounded3"
             android:textColor="@color/hikingTextColor"/>
 
         <Button

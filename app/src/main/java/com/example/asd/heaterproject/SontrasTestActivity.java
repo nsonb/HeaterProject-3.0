@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class SontrasTestActivity extends AppCompatActivity implements View.OnClickListener {
 
     static TextView location;
@@ -20,7 +23,9 @@ public class SontrasTestActivity extends AppCompatActivity implements View.OnCli
     private static final String LOCATIONID = "LatLong";
     // we should also get temp and humidity from shared preferences
     // but for now I am using a fake temperature value
-    private static int indoorTemperature = 21;
+    public static int indoorTemperature = 21;
+    // counter for testing purposes
+    private static int counter2 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +59,9 @@ public class SontrasTestActivity extends AppCompatActivity implements View.OnCli
         gibWeather.execute("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude +
                         "&lon=" + longitude + "&appid=41bc4335b5c44b26947871ea435a4a49");
 
-        // change some strings
+        // change a string
         intro.setText("Indoor temperature is now " + indoorTemperature + "°C");
+
     }
 
     @Override
@@ -66,17 +72,32 @@ public class SontrasTestActivity extends AppCompatActivity implements View.OnCli
                 startActivity(maps);
                 break;
             case R.id.forgeryButton:
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                indoorTemperature = WeatherAPI.tempCelsius + 4;
-                intro.setText("Indoor temperature is now " + indoorTemperature + "°C");
+                intro.setText("Indoor temperature will change in 10 seconds...");
+                startTimer();
                 break;
             case R.id.goBackButton:
                 finish();
                 break;
         }
+    }
+
+    // timer for testing purposes
+    private Timer timer2;
+    private TimerTask timerTask2;
+    public void startTimer(){
+        timer2 = new Timer();
+        initialiseTimerTask();
+        // schedule the timer to wake up every 5 seconds
+        timer2.schedule(timerTask2, 5000, 5000);
+    }
+    public void initialiseTimerTask(){
+        timerTask2 = new TimerTask(){
+            public void run(){
+                if(counter2 == 2){
+                    indoorTemperature = WeatherAPI.tempCelsius + 4;
+                }
+                counter2++;
+            }
+        };
     }
 }

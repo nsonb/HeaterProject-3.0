@@ -14,7 +14,8 @@ import java.net.URL;
 public class WeatherAPI extends AsyncTask<String, Void, String>{
 
     private String result;
-    public static int tempCelsius;
+    // I'm giving temperature some ridiculous default value for checking purposes
+    public static int tempCelsius = 999;
 
     // this is the boring stuff
     @Override

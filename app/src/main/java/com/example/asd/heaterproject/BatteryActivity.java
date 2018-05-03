@@ -52,6 +52,6 @@ public class BatteryActivity extends AppCompatActivity implements View.OnClickLi
         // we make the request to the Thingsee cloud server in backgroud
         // (AsyncTask) so that we don't block the UI (to prevent ANR state, Android Not Responding)
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID,Activity.MODE_PRIVATE);
-        batteryView.setText(prefGet.getString("battery","0"));
+        batteryView.setText(prefGet.getString("battery","0") + "%");
     }
 }

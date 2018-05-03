@@ -1,14 +1,18 @@
 package com.example.asd.heaterproject;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class LauncherActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -17,6 +21,8 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
     private NotificationService nomnomNotificationService;
     Context cntx;
     public Context getCntx(){return cntx;}
+
+    private static final String LOCATIONID = "LatLong";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +37,12 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         indoorsButton.setOnClickListener(this);
         Button hikingButton = (Button)findViewById(R.id.hikingButton);
         hikingButton.setOnClickListener(this);
-        Button batteryButton = (Button)findViewById(R.id.batteryButton);
-        batteryButton.setOnClickListener(this);
+        Button requestButton = (Button)findViewById(R.id.request_button);
+        requestButton.setOnClickListener(this);
+
+        TextView batteryView = (TextView) findViewById(R.id.batteryButton);
+        SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+        batteryView.setText(prefGet.getString("battery","-1") + "%");
 
         // notification service onCreate stuff
         cntx = this;
@@ -55,9 +65,9 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
                 Intent hiking = new Intent(this, Hiking.class);
                 startActivity(hiking);
                 break;
-            case R.id.batteryButton:
-                Intent battery = new Intent(this, BatteryActivity.class);
-                startActivity(battery);
+            case R.id.request_button:
+                Intent main = new Intent(this, MainActivity.class);
+                startActivity(main);
                 break;
         }
     }

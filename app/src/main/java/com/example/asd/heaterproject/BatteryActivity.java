@@ -25,10 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 public class BatteryActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final int MAXPOSITIONS = 20;
-    private static final String PREFERENCEID = "Credentials";
     private static final String LOCATIONID = "LatLong";
-    private String username, password;
     TextView batteryView;
 
     @Override

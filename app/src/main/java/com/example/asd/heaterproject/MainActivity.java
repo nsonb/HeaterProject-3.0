@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String[]             positions = new String[MAXPOSITIONS];
     private String[]             enCondition = new String[MAXPOSITIONS];
     private ArrayAdapter<String> myAdapter;
-//    private ArrayAdapter<String> myEnAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // setup the adapter for the array
         myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, positions);
-//        myEnAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, enCondition);
 
         // then connect it to the list in application's layout
         ListView listView = (ListView) findViewById(R.id.mylist);
-//        listView.setAdapter(myEnAdapter);
         listView.setAdapter(myAdapter);
 
 
@@ -156,7 +153,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ThingSee thingsee;
         List<Location> coordinates = new ArrayList<Location>();
         List<Environment> conditions = new ArrayList<Environment>();
-        List<Double> battery = new ArrayList<>();
 
         @Override
         protected String doInBackground(String... params) {
@@ -170,7 +166,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //System.out.println(events);
                 coordinates = thingsee.getPath(events);
                 conditions = thingsee.getEnvironment(events);
-//                battery = thingsee.getBattery(events);
 
 //                for (Location coordinate: coordinates)
 //                    System.out.println(coordinate);
@@ -214,9 +209,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //put temperature and humidity into a shared preference
                     SharedPreferences prefPut = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
 
-                    enCondition[i] = (new Date(environment.getTime())) + "(Temperature: "
-                                     + environment.getTemperature() + ",Humidity: "
-                                     + environment.getHumidity()+ "%)";
+//                    enCondition[i] = (new Date(environment.getTime())) + "(Temperature: "
+//                                     + environment.getTemperature() + ",Humidity: "
+//                                     + environment.getHumidity()+ "%)";
                     SharedPreferences.Editor prefEditor = prefPut.edit();
                     prefEditor.putString("temperature", String.valueOf(environment.getTemperature()));
                     prefEditor.putString("humidity", String.valueOf(environment.getHumidity()));
@@ -224,12 +219,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     prefEditor.commit();
 
                 }
-/*
-                    SharedPreferences prefPut = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
-                    SharedPreferences.Editor prefEditor = prefPut.edit();
-                    prefEditor.putString("battery", String.valueOf(battery));
-                    prefEditor.commit();
-*/
             } else {
                 // no, tell that to the user and ask a new username/password pair
                 SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
@@ -240,7 +229,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 queryDialog(MainActivity.this, getResources().getString(R.string.info_prompt));
             }
             myAdapter.notifyDataSetChanged();
-//            myEnAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -251,7 +239,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             for (int i = 0; i< enCondition.length; i++)
                 enCondition[i] = "";
             myAdapter.notifyDataSetChanged();
-//            myEnAdapter.notifyDataSetChanged();
         }
 
         @Override

@@ -15,8 +15,8 @@
             android:id="@+id/introText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The current longitude/latitude and address:"
-            android:gravity="left"
+            android:text="@string/locationIntro"
+            android:gravity="start"
             android:textSize="20sp"
             android:layout_marginTop="10sp"
             android:layout_marginHorizontal="10sp"
@@ -49,7 +49,7 @@
             android:layout_below="@+id/currentLat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Location"
+            android:text="@string/locationText"
             android:textSize="20sp"
             android:gravity="center_horizontal"
             android:textColor="@color/hikingTextColor"/>
@@ -59,10 +59,10 @@
             android:layout_below="@+id/currentLoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Address:"
-            android:gravity="left"
+            android:text="@string/addressText"
+            android:gravity="start"
             android:textSize="20sp"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="15sp"
             android:layout_marginHorizontal="10sp"
             android:textStyle="bold"
             android:textColor="@color/hikingTextColor"/>
@@ -75,10 +75,22 @@
             android:text="@string/inputText"
             android:layout_marginHorizontal="20sp"/>
 
+        <TextView
+            android:id="@+id/whatText"
+            android:layout_below="@+id/inputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(write street and nr. OR city)"
+            android:gravity="left"
+            android:textSize="15sp"
+            android:layout_marginHorizontal="25sp"
+            android:textStyle = "italic"
+            android:textColor="@color/hikingTextColor"/>
+
         <Button
             android:id="@+id/enterTextButton"
             android:text="ENTER"
-            android:layout_below="@+id/inputText"
+            android:layout_below="@+id/whatText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"

@@ -20,7 +20,7 @@
             android:layout_marginRight="15sp"
             android:layout_marginLeft="15sp"
             android:textColor="@color/hikingTextColor"
-            android:text="Welcome to the Hiking portion of this application"
+            android:text="@string/infoIntro"
             />
 
             <TextView android:id="@+id/textView2"

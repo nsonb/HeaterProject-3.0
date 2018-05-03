@@ -21,6 +21,9 @@
     <string name="inputText"></string>
     <string name="inputLoc">address, </string>
     <string name="distanceResultCalc">enter address to see distance</string>
+    <string name="locationIntro">The current longitude/latitude and address:</string>
+    <string name="locationText">location</string>
+    <string name="addressText">Address: </string>
 
 
     <string name="battery"></string>
@@ -34,5 +37,6 @@
     <string name="appDescription3">We are aware that this app needs improvement. While this may only be the prototype stage,
         we hope in the future that the application can be further developed into a useful, versatile tool. Thank you for
         downloading!</string>
+    <string name="infoIntro">Welcome to the Hiking portion of this application</string>
 
 </resources>

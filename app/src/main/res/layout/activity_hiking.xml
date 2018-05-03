@@ -46,7 +46,6 @@
             android:text="@string/mainButton"
             android:background="@drawable/rounded"
             android:layout_margin="10sp"
-            android:elevation="20sp"
             android:textColor="@color/hikingTextColor" />
 
         <Button
@@ -55,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/graphButton"
-            android:background="@drawable/rounded1"
+            android:background="@drawable/rounded2"
             android:layout_margin="10sp"
             android:textColor="@color/hikingTextColor"/>
 
@@ -64,7 +63,7 @@
             android:layout_width="160sp"
             android:text="@string/distanceResult"
             android:layout_gravity="center"
-            android:background="@drawable/rounded2"
+            android:background="@drawable/rounded3"
             android:layout_margin="10sp"
             android:textColor="@color/hikingTextColor"/>
 
@@ -76,7 +75,8 @@
             android:text="@string/back"
             android:background="@drawable/rounded4"
             android:layout_margin="10sp"
-            android:textColor="@color/hikingTextColor"/>
+            android:textColor="@color/hikingTextColor"
+            />
 
     </LinearLayout>
 

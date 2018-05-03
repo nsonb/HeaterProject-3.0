@@ -9,8 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -21,9 +21,9 @@ import static java.lang.Math.cos;
 import static java.lang.Math.sqrt;
 
 public class Distance extends AppCompatActivity implements View.OnClickListener {
-    public Double latitude, longitude;
+    public Double latitude, longitude, inputLat, inputLong;
     public Double calculationLat, calculationLong, calculation;
-    public String location, result;
+    public String location, result, inputVal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,6 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_distance);
 
         // find text view
-        TextView distance = (TextView) findViewById(R.id.distance);
         TextView currentLong = (TextView) findViewById(R.id.currentLong);
         TextView currentLat = (TextView) findViewById(R.id.currentLat);
         TextView currentLoc = (TextView) findViewById(R.id.currentLoc);
@@ -39,6 +38,8 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
         // find buttons
         Button backButton = (Button)findViewById(R.id.backButton);
         backButton.setOnClickListener(this);
+        Button enterTextButton = (Button)findViewById(R.id.enterTextButton);
+        enterTextButton.setOnClickListener(this);
 
         SharedPreferences latitudeValues = getSharedPreferences("LOCATIONID", Activity.MODE_PRIVATE);
         latitude = Double.valueOf(latitudeValues.getString("latitude", "0"));
@@ -56,32 +57,60 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
             addresses = gc.getFromLocation(latitude,longitude,1);
 
             String addressStr = addresses.get(0).getAddressLine(0);
-            //String areaStr = addresses.get(0).getLocality();
+            String areaStr = addresses.get(0).getLocality();
             //String cityStr = addresses.get(0).getAdminArea();
             String countryStr = addresses.get(0).getCountryName();
             String postalcodeStr = addresses.get(0).getPostalCode();
 
-            String fullAddress = addressStr+", "+postalcodeStr+", "+countryStr;
+            String fullAddress = addressStr +", "+ postalcodeStr +", "+ countryStr;
             currentLoc.setText(fullAddress);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-            //home as static point:
-        //lat: 60.2215929
-        //long: 24.8050029
-            //Myyrmäen jäähalli as static point:
-        calculationLat = ((latitude - 60.26366729999999)*(40000/360));
-        calculationLong = ((longitude - 24.840160400000065408)*((40000*cos(60))/360));
-        calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));
-
-        result = String.format("%.3f", calculation);
-        distance.setText(result + " km");
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.enterTextButton:
+                EditText inputText = (EditText) findViewById(R.id.inputText);
+                inputVal = inputText.getText().toString();
+
+                Geocoder geoc = new Geocoder(getApplicationContext());
+                int i = 0;
+
+                try {
+                    List<Address> geoResults = geoc.getFromLocationName(inputVal, 1);
+                    while (geoResults.size()==0 && i<5) {
+                        geoResults = geoc.getFromLocationName(inputVal, 1);
+                        i++;
+                    }
+                    if (geoResults.size()>0) {
+                        Address addr = geoResults.get(0);
+                        inputLat = addr.getLatitude();
+                        inputLong = addr.getLongitude();
+                    }
+                    if (i >= 5){
+                        result = "error";
+                    }
+                } catch (Exception e) {
+                    System.out.print(e.getMessage());
+                }
+
+                TextView distance = (TextView) findViewById(R.id.distance);
+                //jäähalli as static point:
+                //lat: 60.26366729999999
+                //long: 24.840160400000065408
+                //Myyrmäen jäähalli as static point:
+                calculationLat = ((latitude - inputLat)*(40000/360));
+                calculationLong = ((longitude - inputLong)*((40000*cos(60))/360));
+                calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));
+
+                result = String.format("%.3f", calculation);
+                distance.setText(result + " km");
+                break;
+
             case R.id.backButton:
                 Intent gps = new Intent(this, Hiking.class);
                 startActivity(gps);

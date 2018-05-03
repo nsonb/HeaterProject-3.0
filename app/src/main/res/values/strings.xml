@@ -13,12 +13,15 @@
 
     <string name="back">BACK</string>
 
-
     <string name="mainButton">Request Data</string>
     <string name="batteryButton">Battery</string>
     <string name="environmentButton">App Info</string>
     <string name="graphButton">Altitude Graph</string>
     <string name="distanceResult">Distance Tracker</string>
+    <string name="inputText"></string>
+    <string name="inputLoc">address, </string>
+    <string name="distanceResultCalc">enter address to see distance</string>
+
 
     <string name="battery"></string>
 

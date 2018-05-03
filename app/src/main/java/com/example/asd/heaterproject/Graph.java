@@ -24,6 +24,7 @@ public class Graph extends AppCompatActivity implements View.OnClickListener{
 
     public TextView currentAlt;
     public String altitude;
+    public Integer res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class Graph extends AppCompatActivity implements View.OnClickListener{
         TextView currentAlt = (TextView) findViewById(R.id.currentAlt);
         currentAlt.setText(String.valueOf(altitude) + " m");
 
+        res = (Double.valueOf(altitude)).intValue();
+
         GraphView graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
                 new DataPoint(0, 26),
@@ -45,11 +48,10 @@ public class Graph extends AppCompatActivity implements View.OnClickListener{
                 new DataPoint(20, 22),
                 new DataPoint(30, 33),
                 new DataPoint(40, 37),
-                new DataPoint(50, 40),
-                new DataPoint(60, 38),
+                new DataPoint(50, 60),
+                new DataPoint(60, 45),
                 new DataPoint(70, 32),
-                new DataPoint(80, 28),
-                new DataPoint(90, 30)
+                new DataPoint(80, res)
         });
         graph.addSeries(series);
     }

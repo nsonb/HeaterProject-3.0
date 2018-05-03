@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/currentAlt"
             android:layout_centerHorizontal="true"
-            android:paddingTop="60sp"
+            android:paddingTop="20sp"
             android:text="Altitude graph:"
             android:textSize="20sp"
             android:textColor="@color/hikingTextColor"/>
@@ -69,5 +69,4 @@
             android:textColor="@color/hikingTextColor"/>
 
     </RelativeLayout>
-
 </android.support.constraint.ConstraintLayout>

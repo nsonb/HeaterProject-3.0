@@ -50,6 +50,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double longitude = Double.valueOf(prefGet.getString("longitude","27.0174193"));
         LatLng position = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(position).title("Marker at " + latitude + ", " + longitude));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 5));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
     }
 }

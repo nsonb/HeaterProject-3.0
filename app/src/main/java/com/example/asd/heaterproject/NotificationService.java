@@ -1,8 +1,10 @@
 package com.example.asd.heaterproject;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,6 +13,7 @@ import java.util.TimerTask;
 
 public class NotificationService extends Service {
 
+    private static final String LOCATIONID = "LatLong";
     // booleans for different checks
     public boolean temperatureAlertON = false;
 
@@ -66,8 +69,10 @@ public class NotificationService extends Service {
 
     // compare values and issue the appropriate notifications
     public void compareTemperatures(){
+        SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+        double indoorTemperature = Double.valueOf(prefGet.getString("temperature","0.0."));
         if(!temperatureAlertON && WeatherAPI.tempCelsius != 999) {
-            if (SontrasTestActivity.indoorTemperature <
+            if (indoorTemperature <
                     WeatherAPI.tempCelsius + 5) {
                 notifier.notify("Alert from The Thingsee App",
                         "Indoor temperature has decreased critically.",
@@ -76,7 +81,7 @@ public class NotificationService extends Service {
             }
         }
         else if (temperatureAlertON && WeatherAPI.tempCelsius != 999){
-            if (SontrasTestActivity.indoorTemperature >=
+            if (indoorTemperature >=
                     WeatherAPI.tempCelsius + 5) {
                 temperatureAlertON = false;
             }

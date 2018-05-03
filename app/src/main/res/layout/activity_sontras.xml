@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:padding="16dp"
+            android:gravity="center"
             android:text="So far, this is an empty activity."
             />
         <Button android:id="@+id/openMapButton"

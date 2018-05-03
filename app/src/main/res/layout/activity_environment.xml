@@ -56,15 +56,15 @@
             android:text="@string/appDescription3"
             />
 
-        <Button android:id="@+id/goBackButton"
+        <Button
+            android:id="@+id/goBackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/back"
-            android:padding="10sp"
-            android:textColor="@color/hikingTextColor"
             android:background="@drawable/rounded0"
-            />
+            android:padding="10sp"
+            android:text="@string/back"
+            android:textColor="@color/hikingTextColor" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

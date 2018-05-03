@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/hikingBackground3">
+    android:background="@color/hikingBackground4">
 
     <Button android:id="@+id/mybutton"
         android:layout_height="wrap_content"
@@ -19,7 +19,9 @@
         android:layout_gravity="center"
         android:padding="15sp"
         android:background="@drawable/rounded0"
-        android:textColor="@color/hikingTextColor"/>
+        android:textColor="@color/hikingTextColor"
+        android:backgroundTint="@color/cast_expanded_controller_text_color"/>
+
     <ListView
         android:id="@+id/mylist"
         android:layout_height="wrap_content"

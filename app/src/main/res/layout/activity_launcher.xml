@@ -16,9 +16,13 @@
         android:layout_above="@+id/introText"
         android:layout_alignStart="@+id/request_button"
         android:layout_marginBottom="-114dp"
-        android:progress="80"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:progress="30"
         android:foregroundTint="@color/white"
-        android:backgroundTint="@color/black"/>
+
+        android:indeterminate="false"
+        android:indeterminateTint="@color/wallet_holo_blue_light"
+        android:indeterminateTintMode="src_in"/>
     <Button
         android:id="@+id/request_button"
         android:layout_width="304dp"

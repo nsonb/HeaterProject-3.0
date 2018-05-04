@@ -49,6 +49,7 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         batteryView.setText(prefGet.getString("battery","-1") + "%");
         batterylevel.setProgress(Integer.parseInt(prefGet.getString("battery","0")));
 
+
         // notification service onCreate stuff
         cntx = this;
         nomnomNotificationService = new NotificationService(getCntx());

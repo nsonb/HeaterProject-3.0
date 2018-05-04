@@ -78,8 +78,8 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             case R.id.optionsButton:
-
-
+                Intent options = new Intent(this,Option.class);
+                startActivity(options);
                 break;
 
             case R.id.goBackButton:

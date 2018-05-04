@@ -53,6 +53,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="192dp"
+        android:onClick="OnCheckBoxClicked"
         android:text="Thingsee Device Location changes" />
 
     <Button

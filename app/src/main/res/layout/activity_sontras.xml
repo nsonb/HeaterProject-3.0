@@ -59,7 +59,7 @@
         android:layout_centerVertical="true"
         android:gravity="left"
         android:padding="6dp"
-        android:text="humid"
+        android:text="humidity"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
@@ -99,7 +99,7 @@
         android:layout_marginStart="44dp"
         android:gravity="left"
         android:padding="6dp"
-        android:text="temperature"
+        android:text="temp"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
@@ -126,7 +126,7 @@
         android:layout_marginEnd="44dp"
         android:gravity="left"
         android:padding="6dp"
-        android:text="Indoor Numidity"
+        android:text="Indoor Humidity"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
@@ -139,7 +139,7 @@
         android:layout_alignStart="@+id/textView1"
         android:gravity="left"
         android:padding="6dp"
-        android:text="Outdoor Numidity"
+        android:text="Outdoor Humidity"
         android:textColor="@color/white"
         android:textSize="20dp" />
 

@@ -147,8 +147,10 @@ public class NotificationService extends Service {
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
         double latitude = Double.valueOf(prefGet.getString("latitude","0.0"));
         double longitude = Double.valueOf(prefGet.getString("longitude","0.0"));
+        latitude = (double)Math.round(latitude * 100000000d) / 100000000d;
+        longitude = (double)Math.round(longitude * 100000000d) / 100000000d;
         if(!locationAlertON && latitude != 0.0 && longitude != 0.0) {
-            if (latitude != previousLatitude || longitude != previousLongitude) {
+            if ((latitude != previousLatitude || longitude != previousLongitude)&& previousLatitude != 0.0 && previousLongitude != 0.0) {
                 notifier.notify("Device alert from In & Out",
                         "Location of Thingsee device has changed.",
                         1221);

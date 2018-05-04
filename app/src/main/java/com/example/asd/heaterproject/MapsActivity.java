@@ -48,6 +48,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
         double latitude = Double.valueOf(prefGet.getString("latitude","68.9105231"));
         double longitude = Double.valueOf(prefGet.getString("longitude","27.0174193"));
+        latitude = (double)Math.round(latitude * 100000000d) / 100000000d;
+        longitude = (double)Math.round(longitude * 100000000d) / 100000000d;
         LatLng position = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(position).title("Marker at " + latitude + ", " + longitude));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));

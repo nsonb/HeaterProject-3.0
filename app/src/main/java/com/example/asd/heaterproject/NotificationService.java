@@ -28,11 +28,16 @@ public class NotificationService extends Service {
 
     // booleans for different checks
     public boolean temperatureAlertON = false;
+    public boolean humidityAlertON = false;
+    public boolean fireAlertON = false;
+    public boolean locationAlertON = false;
+    public boolean batteryAlertON = false;
 
     // other variables
     public int counter = 1;
     IssueNotification notifier;
-
+    public double previousLatitude = 0.0;
+    public double previousLongitude = 0.0;
 
     // constructor
     public NotificationService(Context applicationContext){
@@ -81,6 +86,10 @@ public class NotificationService extends Service {
                 password = prefGet.getString("password","");
                 new TalkToThingsee().execute("QueryState");
                 compareTemperatures();
+                checkHumidity();
+                checkFire();
+                checkLocation();
+                checkBattery();
             }
         };
     }
@@ -92,7 +101,7 @@ public class NotificationService extends Service {
         if(!temperatureAlertON && WeatherAPI.tempCelsius != 999) {
             if (indoorTemperature <
                     WeatherAPI.tempCelsius + 5) {
-                notifier.notify("Alert from The Thingsee App",
+                notifier.notify("Temperature alert from In & Out",
                         "Indoor temperature has decreased critically.",
                         3322);
                 temperatureAlertON = true;
@@ -106,6 +115,72 @@ public class NotificationService extends Service {
         }
     }
 
+    public void checkHumidity(){
+        SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+        double indoorHumidity = Double.valueOf(prefGet.getString("humidity","0.0."));
+        if(!humidityAlertON && indoorHumidity >= 50.0) {
+            notifier.notify("Humidity alert from In & Out",
+                    "Indoor humidity has increased critically.",
+                    4288);
+            humidityAlertON = true;
+        }
+        else if (temperatureAlertON && indoorHumidity < 50.0){
+            humidityAlertON = false;
+        }
+    }
+
+    public void checkFire(){
+        SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+        double indoorTemperature = Double.valueOf(prefGet.getString("temperature","0.0."));
+        if(!fireAlertON && indoorTemperature >= 60.0) {
+            notifier.notify("Fire alert from In & Out!",
+                    "Indoor temperature is over 60 °C!",
+                    4288);
+            fireAlertON = true;
+        }
+        else if (fireAlertON && indoorTemperature < 60.0){
+            fireAlertON = false;
+        }
+    }
+
+    public void checkLocation(){
+        SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+        double latitude = Double.valueOf(prefGet.getString("latitude","0.0"));
+        double longitude = Double.valueOf(prefGet.getString("longitude","0.0"));
+        if(!locationAlertON && latitude != 0.0 && longitude != 0.0) {
+            if (latitude != previousLatitude || longitude != previousLongitude) {
+                notifier.notify("Device alert from In & Out",
+                        "Location of Thingsee device has changed.",
+                        1221);
+                locationAlertON = true;
+            }
+        }
+        else if (locationAlertON && latitude != 0.0 && longitude != 0.0){
+            if (latitude == previousLatitude && longitude == previousLongitude) {
+                locationAlertON = false;
+            }
+        }
+        previousLatitude = latitude;
+        previousLongitude = longitude;
+    }
+
+    public void checkBattery(){
+        SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
+        double battery = Double.parseDouble(prefGet.getString("battery","-1"));
+        if(!batteryAlertON && battery != (-1)){
+            if(battery < 10){
+                notifier.notify("Battery alert from In & Out",
+                        "Thingsee device battery is below 10%.",
+                        7733);
+                batteryAlertON = true;
+            }
+        }
+        else if(batteryAlertON && battery != (-1)){
+            if(battery >= 10){
+                batteryAlertON = false;
+            }
+        }
+    }
 
     public void stopTimerTask(){
         if(timer != null){

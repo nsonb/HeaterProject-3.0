@@ -58,7 +58,6 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
         // default coordinates are in Inari, Lapland
         double latitude = Double.valueOf(prefGet.getString("latitude","68.9105231"));
         double longitude = Double.valueOf(prefGet.getString("longitude","27.0174193"));
-        double indoorTemperature = Double.valueOf(prefGet.getString("temperature","0.0"));
 
         // create an instance of the weather API class and call its execute
         WeatherAPI gibWeather = new WeatherAPI();

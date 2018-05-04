@@ -75,22 +75,10 @@
             android:text="@string/inputText"
             android:layout_marginHorizontal="20sp"/>
 
-        <TextView
-            android:id="@+id/whatText"
-            android:layout_below="@+id/inputText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="(write street and nr. OR city)"
-            android:gravity="left"
-            android:textSize="15sp"
-            android:layout_marginHorizontal="25sp"
-            android:textStyle = "italic"
-            android:textColor="@color/hikingTextColor"/>
-
         <Button
             android:id="@+id/enterTextButton"
             android:text="ENTER"
-            android:layout_below="@+id/whatText"
+            android:layout_below="@+id/inputText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"

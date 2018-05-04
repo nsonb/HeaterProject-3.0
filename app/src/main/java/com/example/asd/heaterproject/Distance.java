@@ -58,12 +58,13 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
             addresses = gc.getFromLocation(latitude,longitude,1);
 
             String addressStr = addresses.get(0).getAddressLine(0);
-            String areaStr = addresses.get(0).getLocality();
+            //String areaStr = addresses.get(0).getLocality();
             //String cityStr = addresses.get(0).getAdminArea();
-            String countryStr = addresses.get(0).getCountryName();
-            String postalcodeStr = addresses.get(0).getPostalCode();
+            //String countryStr = addresses.get(0).getCountryName();
+            //String postalcodeStr = addresses.get(0).getPostalCode();
 
-            String fullAddress = addressStr +", "+ postalcodeStr +", "+ countryStr;
+            String fullAddress = addressStr;
+            //String fullAddress = addressStr +", "+ postalcodeStr +", "+ countryStr;
             currentLoc.setText(fullAddress);
 
         } catch (IOException e) {
@@ -97,7 +98,6 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
                         //jäähalli as static point:
                         //lat: 60.26366729999999
                         //long: 24.840160400000065408
-                        //Myyrmäen jäähalli as static point:
                         calculationLat = ((latitude - inputLat)*(40000/360));
                         calculationLong = ((longitude - inputLong)*((40000*cos(60))/360));
                         calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));

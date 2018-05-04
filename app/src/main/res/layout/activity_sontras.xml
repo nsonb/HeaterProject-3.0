@@ -13,13 +13,21 @@
         android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-
         android:layout_marginTop="71dp"
         android:gravity="left"
         android:paddingLeft="0dp"
         android:text="So far, this is an empty activity."
         android:textColor="@color/white"
         android:textSize="20dp" />
+
+    <TextView android:id="@+id/weatherDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/textView1"
+        android:layout_alignStart="@id/textView1"
+        android:text="Weather description"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
 
         <Button
             android:id="@+id/openMapButton"

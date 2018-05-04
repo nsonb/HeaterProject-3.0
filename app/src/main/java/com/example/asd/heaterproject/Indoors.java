@@ -18,6 +18,7 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
     static TextView indoorTemp;
     static TextView outdoorTemp;
     static TextView outdoorHumidity;
+    static TextView weatherDescription;
     static TextView intro;
     // name for shared preference storing lat long data
     // we should also get temp and humidity from shared preferences
@@ -37,6 +38,7 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
         outdoorHumidity = findViewById(R.id.outdoorHumidity);
         indoorTemp = findViewById(R.id.indoorTemp);
         indoorHumid = findViewById(R.id.indoorHumid);
+        weatherDescription = findViewById(R.id.weatherDesc);
 
         // find buttons
         Button goBack = (Button) findViewById(R.id.goBackButton);

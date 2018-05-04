@@ -88,6 +88,10 @@ public class NotificationService extends Service {
         }
     }
 
+    public void checkHumidity(){
+
+    }
+
     public void stopTimerTask(){
         if(timer != null){
             timer.cancel();

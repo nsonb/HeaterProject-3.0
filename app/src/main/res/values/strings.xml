@@ -7,7 +7,7 @@
     <string name="sontrasButton">Go to Sontra\'s test activity</string>
     <string name="goBackButton">Go back</string>
     <string name="openMapButton">Map</string>
-    <string name="forgeDataButton">Forge data</string>
+    <string name="optionsButton">Options</string>
     <string name="title_activity_maps">Map of Thingsee Device Location</string>
 
 

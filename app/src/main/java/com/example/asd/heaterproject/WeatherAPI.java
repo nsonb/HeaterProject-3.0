@@ -79,12 +79,9 @@ public class WeatherAPI extends AsyncTask<String, Void, String>{
 
             // set the data to TextViews
             Indoors.intro.setText("Weather in\n"+ placeName + ", " + countryCode + ":");
-            
-//            Indoors.weatherDescription.setText(weatherDesc);
-
+            Indoors.weatherDescription.setText(weatherDesc);
             Indoors.outdoorTemp.setText(tempCelsius + " °C");
             Indoors.outdoorHumidity.setText(humidity + " %");
-
 
 
         } catch (JSONException e) {

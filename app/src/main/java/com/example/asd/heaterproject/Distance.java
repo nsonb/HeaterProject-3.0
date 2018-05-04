@@ -95,11 +95,9 @@ public class Distance extends AppCompatActivity implements View.OnClickListener 
                         inputLat = addr.getLatitude();
                         inputLong = addr.getLongitude();
 
-                        //jäähalli as static point:
-                        //lat: 60.26366729999999
-                        //long: 24.840160400000065408
+                        //PLANE APPROXIMATION
                         calculationLat = ((latitude - inputLat)*(40000/360));
-                        calculationLong = ((longitude - inputLong)*((40000*cos(60))/360));
+                        calculationLong = ((longitude - inputLong)*((40000*cos(java.lang.Math.toRadians(60)))/360));
                         calculation = (sqrt((Math.pow(calculationLat, 2.0))+(Math.pow(calculationLong, 2.0))));
 
                         result = String.format("%.3f", calculation);

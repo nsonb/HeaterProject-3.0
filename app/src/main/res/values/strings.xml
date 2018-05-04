@@ -40,5 +40,6 @@
         we hope in the future that the application can be further developed into a useful, versatile tool. Thank you for
         downloading!</string>
     <string name="infoIntro">Welcome to the Hiking portion of this application</string>
+    <string name="title_activity_option">Option</string>
 
 </resources>

@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Indoor temperature exceeds outdoor temperature by less than 5oC in cold months"
+        android:text="Indoor temperature exceeds outdoor temperature by less than 5 °C in cold months"
         android:onClick="OnCheckBoxClicked"/>
 
     <CheckBox

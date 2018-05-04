@@ -47,7 +47,7 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         TextView batteryView = (TextView) findViewById(R.id.batteryButton);
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
         batteryView.setText(prefGet.getString("battery","-1") + "%");
-        batterylevel.setProgress(Integer.parseInt(prefGet.getString("battery","0")));
+        batterylevel.setProgress((int)Double.parseDouble(prefGet.getString("battery","0")));
 
         // notification service onCreate stuff
         cntx = this;

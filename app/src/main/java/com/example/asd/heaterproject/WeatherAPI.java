@@ -1,5 +1,7 @@
 package com.example.asd.heaterproject;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -16,6 +18,7 @@ public class WeatherAPI extends AsyncTask<String, Void, String>{
     private String result;
     // I'm giving temperature some ridiculous default value for checking purposes
     public static int tempCelsius = 999;
+
 
     // this is the boring stuff
     @Override
@@ -77,10 +80,12 @@ public class WeatherAPI extends AsyncTask<String, Void, String>{
             // set the data to TextViews
             Indoors.intro.setText("Weather in area:"+ placeName + ", " + countryCode);
             
-            Indoors.weatherDescription.setText(weatherDesc);
+//            Indoors.weatherDescription.setText(weatherDesc);
 
             Indoors.outdoorTemp.setText(tempCelsius + " °C");
             Indoors.outdoorHumidity.setText(humidity + " %");
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();

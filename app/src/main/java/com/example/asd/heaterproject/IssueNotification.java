@@ -24,7 +24,7 @@ public class IssueNotification {
         NotificationManager manager =
                 (NotificationManager) this.cntx.getSystemService(this.cntx.NOTIFICATION_SERVICE);
         Intent goToApp =
-                new Intent(cntx.getApplicationContext(), SontrasTestActivity.class);
+                new Intent(cntx.getApplicationContext(), Indoors.class);
         PendingIntent pendingIntent =
                 PendingIntent.getActivity(cntx.getApplicationContext(),
                         0, goToApp, PendingIntent.FLAG_UPDATE_CURRENT);

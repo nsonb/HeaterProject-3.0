@@ -14,9 +14,9 @@ import java.util.TimerTask;
 
 public class Indoors extends AppCompatActivity implements View.OnClickListener {
 
-    static TextView location;
-    static TextView weatherDescription;
-    static TextView outdoorTemperature;
+    static TextView indoorHumid;
+    static TextView indoorTemp;
+    static TextView outdoorTemp;
     static TextView outdoorHumidity;
     static TextView intro;
     // name for shared preference storing lat long data
@@ -33,11 +33,10 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
 
         // find text views
         intro = (TextView) findViewById(R.id.textView1);
-        TextView weatherIntro = (TextView) findViewById(R.id.textView2);
-        location = (TextView) findViewById(R.id.placeName);
-        weatherDescription = (TextView) findViewById(R.id.weatherDescription);
-        outdoorTemperature = (TextView) findViewById(R.id.outdoorTemp);
-        outdoorHumidity = (TextView) findViewById(R.id.outdoorHumidity);
+        outdoorTemp = findViewById(R.id.outdoorTemp);
+        outdoorHumidity = findViewById(R.id.outdoorHumidity);
+        indoorTemp = findViewById(R.id.indoorTemp);
+        indoorHumid = findViewById(R.id.indoorHumid);
 
         // find buttons
         Button goBack = (Button) findViewById(R.id.goBackButton);
@@ -60,7 +59,7 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
                 "&lon=" + longitude + "&appid=41bc4335b5c44b26947871ea435a4a49");
 
         // change a string
-        intro.setText("Indoor temperature is now " + indoorTemperature + "°C");
+        //intro.setText("Indoor temperature is now " + indoorTemperature + "°C");
 
     }
 

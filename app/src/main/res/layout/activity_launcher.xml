@@ -11,11 +11,12 @@
 
     <Button
         android:id="@+id/request_button"
-        android:layout_width="wrap_content"
+        android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/Request_button"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/introText"
+        android:layout_marginBottom="214dp"
+        android:text="@string/Request_button" />
 
     <TextView
         android:id="@+id/introText"
@@ -85,14 +86,12 @@
 
     <TextView
         android:id="@+id/batteryButton"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="71dp"
         android:adjustViewBounds="false"
-        android:background="@drawable/rounded0"
         android:drawableLeft="@drawable/battery"
         android:drawablePadding="@dimen/activity_vertical_margin"
         android:gravity="center"
@@ -101,7 +100,7 @@
         android:paddingRight="23dp"
         android:paddingTop="16dp"
         android:text="@string/batteryButton"
-        android:textSize="15dp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hikingButton" />

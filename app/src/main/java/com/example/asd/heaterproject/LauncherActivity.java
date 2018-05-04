@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -22,6 +23,7 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
     Context cntx;
     public Context getCntx(){return cntx;}
 
+
     private static final String LOCATIONID = "LatLong";
 
     @Override
@@ -33,6 +35,8 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         TextView intro = (TextView) findViewById(R.id.introText);
 
         // find buttons
+        ProgressBar batterylevel = findViewById(R.id.batteryBar);
+
         Button indoorsButton = (Button)findViewById(R.id.indoorsButton);
         indoorsButton.setOnClickListener(this);
         Button hikingButton = (Button)findViewById(R.id.hikingButton);
@@ -43,6 +47,8 @@ public class LauncherActivity extends AppCompatActivity implements View.OnClickL
         TextView batteryView = (TextView) findViewById(R.id.batteryButton);
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
         batteryView.setText(prefGet.getString("battery","-1") + "%");
+        batterylevel.setProgress((int)Double.parseDouble(prefGet.getString("battery","0")));
+
 
         // notification service onCreate stuff
         cntx = this;

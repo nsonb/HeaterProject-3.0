@@ -29,14 +29,15 @@
         android:textColor="@color/white"
         android:textSize="20dp"/>
 
-        <Button
-            android:id="@+id/openMapButton"
-            android:layout_width="109dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/goBackButton"
-            android:layout_gravity="center"
-            android:text="@string/openMapButton" />
+    <Button
+
+        android:id="@+id/goBackButton"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView1"
+        android:layout_alignTop="@+id/optionsButton"
+        android:layout_gravity="center"
+        android:text="@string/back" />
 
 
     <TextView
@@ -144,16 +145,17 @@
         android:textSize="20dp" />
 
     <Button
-            android:id="@+id/optionsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/openMapButton"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:text="@string/optionsButton" />
+        android:id="@+id/optionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/openMapButton"
+        android:layout_gravity="center"
+        android:layout_marginEnd="133dp"
+        android:text="@string/optionsButton" />
 
         <Button
-            android:id="@+id/goBackButton"
+            android:id="@+id/openMapButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -161,7 +163,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="14dp"
-            android:text="@string/goBackButton" />
+            android:text="@string/openMapButton" />
 
 
 </RelativeLayout>

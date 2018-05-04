@@ -1,33 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Option">
-
-    <android.support.design.widget.AppBarLayout
+    android:orientation="vertical">
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:textSize="30dp"
+        android:text="Options"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_option" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.AppCompatAutoCompleteTextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:text="Notify me if" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <CheckBox
+        android:id="@+id/indoorExceedsOutdoor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Indoor temperature exceeds outdoor temperature by less than 5 °C in cold months"
+        android:onClick="OnCheckBoxClicked"/>
+
+    <CheckBox
+        android:id="@+id/humidExceeds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Indoor humidity exceeds 50%"
+        android:onClick="OnCheckBoxClicked"/>
+
+    <CheckBox
+        android:id="@+id/temperatureExceeds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Temperature exceeds 60oC"
+        android:onClick="OnCheckBoxClicked"
+        />
+
+    <CheckBox
+        android:id="@+id/locationChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="OnCheckBoxClicked"
+        android:text="Thingsee Device Location changes" />
+
+    <Button
+        android:id="@+id/optionBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back" />
+
+</LinearLayout>

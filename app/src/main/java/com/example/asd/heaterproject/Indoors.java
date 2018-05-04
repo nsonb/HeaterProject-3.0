@@ -82,7 +82,8 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             case R.id.goBackButton:
-                finish();
+                Intent main = new Intent(this,MainActivity.class);
+                startActivity(main);
                 break;
         }
     }

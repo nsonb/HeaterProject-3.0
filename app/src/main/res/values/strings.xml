@@ -5,8 +5,8 @@
     <string name="no_connection">No connection to Thingsee</string>
 
     <string name="sontrasButton">Go to Sontra\'s test activity</string>
-    <string name="goBackButton">Go back</string>
-    <string name="openMapButton">Map</string>
+    <string name="goBackButton">Main Menu</string>
+    <string name="openMapButton">Open Map</string>
     <string name="optionsButton">Options</string>
     <string name="title_activity_maps">Map of Thingsee Device Location</string>
 

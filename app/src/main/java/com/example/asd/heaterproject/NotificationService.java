@@ -34,7 +34,7 @@ public class NotificationService extends Service {
     public boolean batteryAlertON = false;
 
     // other variables
-    public int counter = 1;
+    public long counter = 1;
     IssueNotification notifier;
     public double previousLatitude = 0.0;
     public double previousLongitude = 0.0;
@@ -72,8 +72,8 @@ public class NotificationService extends Service {
         timer = new Timer();
         initializeTimerTask();
 
-        // schedules the timer to wake up every 5 seconds
-        timer.schedule(timerTask, 5000, 5000);
+        // schedules the timer to wake up every 15 seconds
+        timer.schedule(timerTask, 15000, 15000);
     }
 
     // make checks every time the timer wakes up

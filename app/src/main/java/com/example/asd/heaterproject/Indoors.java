@@ -66,8 +66,6 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -82,8 +80,8 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             case R.id.goBackButton:
-                Intent main = new Intent(this,MainActivity.class);
-                startActivity(main);
+                Intent launcher = new Intent(this,LauncherActivity.class);
+                startActivity(launcher);
                 break;
         }
     }

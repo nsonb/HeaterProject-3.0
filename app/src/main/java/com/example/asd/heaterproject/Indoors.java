@@ -16,10 +16,12 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
 
     static TextView indoorHumid;
     static TextView indoorTemp;
+    //content for these views are set in weatherAPI.java
     static TextView outdoorTemp;
     static TextView outdoorHumidity;
     static TextView weatherDescription;
     static TextView intro;
+
     // name for shared preference storing lat long data
     // we should also get temp and humidity from shared preferences
     // but for now I am using a fake temperature value
@@ -40,6 +42,10 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
         indoorHumid = findViewById(R.id.indoorHumid);
         weatherDescription = findViewById(R.id.weatherDesc);
 
+        SharedPreferences prefGet = getSharedPreferences(LOCATIONID,Activity.MODE_PRIVATE);
+        Indoors.indoorTemp.setText(prefGet.getString("temperature","0") + " °C");
+        Indoors.indoorHumid.setText(prefGet.getString("humidity","0") + " %");
+
         // find buttons
         Button goBack = (Button) findViewById(R.id.goBackButton);
         Button openMap = (Button) findViewById(R.id.openMapButton);
@@ -50,7 +56,6 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
 
         // get location coordinates from shared preferences
         // default coordinates are in Inari, Lapland
-        SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
         double latitude = Double.valueOf(prefGet.getString("latitude","68.9105231"));
         double longitude = Double.valueOf(prefGet.getString("longitude","27.0174193"));
         double indoorTemperature = Double.valueOf(prefGet.getString("temperature","0.0"));
@@ -61,9 +66,12 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
                 "&lon=" + longitude + "&appid=41bc4335b5c44b26947871ea435a4a49");
 
         // change a string
-        //intro.setText("Indoor temperature is now " + indoorTemperature + "°C");
+        intro.setText("Indoor temperature is now " + indoorTemperature + "°C");
+
 
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -72,16 +80,18 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
                 Intent maps = new Intent(this, MapsActivity.class);
                 startActivity(maps);
                 break;
+/*
             case R.id.forgeryButton:
                 intro.setText("Indoor temperature will change in 10 seconds...");
                 startTimer();
                 break;
+*/
             case R.id.goBackButton:
                 finish();
                 break;
         }
     }
-
+/*
     // timer for testing purposes
     private Timer timer2;
     private TimerTask timerTask2;
@@ -95,10 +105,11 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
         timerTask2 = new TimerTask(){
             public void run(){
                 if(counter2 == 2){
-//                    indoorTemperature = WeatherAPI.tempCelsius + 4;
+                    indoorTemperature = WeatherAPI.tempCelsius + 4;
                 }
                 counter2++;
             }
         };
     }
+*/
 }

@@ -19,6 +19,7 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
     //content for these views are set in weatherAPI.java
     static TextView outdoorTemp;
     static TextView outdoorHumidity;
+    static TextView weatherDescription;
     static TextView intro;
 
     // name for shared preference storing lat long data
@@ -39,6 +40,7 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
         outdoorHumidity = findViewById(R.id.outdoorHumidity);
         indoorTemp = findViewById(R.id.indoorTemp);
         indoorHumid = findViewById(R.id.indoorHumid);
+        weatherDescription = findViewById(R.id.weatherDesc);
 
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID,Activity.MODE_PRIVATE);
         Indoors.indoorTemp.setText(prefGet.getString("temperature","0") + " °C");
@@ -47,10 +49,10 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
         // find buttons
         Button goBack = (Button) findViewById(R.id.goBackButton);
         Button openMap = (Button) findViewById(R.id.openMapButton);
-        Button forgeData = (Button) findViewById(R.id.forgeryButton);
+        Button goToOptions = (Button) findViewById(R.id.optionsButton);
         goBack.setOnClickListener(this);
         openMap.setOnClickListener(this);
-        forgeData.setOnClickListener(this);
+        goToOptions.setOnClickListener(this);
 
         // get location coordinates from shared preferences
         // default coordinates are in Inari, Lapland
@@ -63,10 +65,6 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
         gibWeather.execute("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude +
                 "&lon=" + longitude + "&appid=41bc4335b5c44b26947871ea435a4a49");
 
-        // change a string
-        intro.setText("Indoor temperature is now " + indoorTemperature + "°C");
-
-
     }
 
 
@@ -78,12 +76,12 @@ public class Indoors extends AppCompatActivity implements View.OnClickListener {
                 Intent maps = new Intent(this, MapsActivity.class);
                 startActivity(maps);
                 break;
-/*
-            case R.id.forgeryButton:
-                intro.setText("Indoor temperature will change in 10 seconds...");
-                startTimer();
+
+            case R.id.optionsButton:
+
+
                 break;
-*/
+
             case R.id.goBackButton:
                 finish();
                 break;

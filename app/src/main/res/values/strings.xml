@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Thingsee</string>
+    <string name="app_name">In &amp; Out</string>
     <string name="prompt">No credentials set, give Thingsee username and password</string>
     <string name="info_prompt">Invalid username/password or no connection to Thingsee, give Thingsee username and password</string>
     <string name="no_connection">No connection to Thingsee</string>
@@ -7,8 +7,8 @@
     <string name="sontrasButton">Go to Sontra\'s test activity</string>
     <string name="goBackButton">Go back</string>
     <string name="openMapButton">Map</string>
-    <string name="forgeDataButton">Forge data</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="optionsButton">Options</string>
+    <string name="title_activity_maps">Map of Thingsee Device Location</string>
 
 
     <string name="back">BACK</string>
@@ -28,7 +28,7 @@
 
     <string name="battery"></string>
 
-    <string name="Request_button">Request data from thingsee server</string>
+    <string name="Request_button">Request data from Thingsee server</string>
 
 
     <string name="appDescription1">In this application, you are able to check the various altitudes of which you have reached

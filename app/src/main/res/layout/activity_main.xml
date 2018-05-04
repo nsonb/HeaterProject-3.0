@@ -15,7 +15,8 @@
     <Button android:id="@+id/mybutton"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Request data from the ThingseeONE"
+        android:text="@string/Request_button"
+        android:textSize="12sp"
         android:layout_gravity="center"
         android:padding="15sp"
         android:background="@drawable/rounded0"
@@ -24,7 +25,19 @@
 
     <ListView
         android:id="@+id/mylist"
+        android:layout_width="wrap_content"
+        android:layout_height="325dp"
+        android:textColor="@color/hikingTextColor" />
+
+    <Button android:id="@+id/main_back_button"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:textColor="@color/hikingTextColor"/>
+        android:text="@string/back"
+        android:textSize="12sp"
+        android:layout_gravity="center"
+        android:padding="15sp"
+        android:background="@drawable/rounded0"
+        android:textColor="@color/hikingTextColor"
+        android:backgroundTint="@color/cast_expanded_controller_text_color"/>
+
 </LinearLayout>

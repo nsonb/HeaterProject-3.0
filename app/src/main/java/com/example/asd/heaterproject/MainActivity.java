@@ -74,9 +74,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listView.setAdapter(myAdapter);
 
 
-
+        Button requestButton = (Button)findViewById(R.id.mybutton);
+        requestButton.setOnClickListener(this);
+        Button backButton = (Button)findViewById(R.id.main_back_button);
+        backButton.setOnClickListener(this);
         // setup the button event listener to receive onClick events
-        ((Button)findViewById(R.id.mybutton)).setOnClickListener(this);
 
         // check that we know username and password for the Thingsee cloud
         SharedPreferences prefGet = getSharedPreferences(PREFERENCEID, Activity.MODE_PRIVATE);
@@ -143,7 +145,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // we make the request to the Thingsee cloud server in backgroud
         // (AsyncTask) so that we don't block the UI (to prevent ANR state, Android Not Responding)
-        new TalkToThingsee().execute("QueryState");
+        switch (v.getId()) {
+            case R.id.mybutton:
+                new TalkToThingsee().execute("QueryState");
+                break;
+            case R.id.main_back_button:
+                finish();
+                break;
+        }
+
+
+//        new TalkToThingsee().execute("QueryState");
     }
 
     /* This class communicates with the ThingSee client on a separate thread (background processing)

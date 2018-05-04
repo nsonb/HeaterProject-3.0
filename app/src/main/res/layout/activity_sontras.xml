@@ -13,13 +13,21 @@
         android:layout_height="80dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-
         android:layout_marginTop="71dp"
         android:gravity="left"
         android:paddingLeft="0dp"
-        android:text="So far, this is an empty activity."
+        android:text="This is Text View 1."
         android:textColor="@color/white"
         android:textSize="20dp" />
+
+    <TextView android:id="@+id/weatherDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/textView1"
+        android:layout_alignStart="@id/textView1"
+        android:text="Weather description"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
 
         <Button
             android:id="@+id/openMapButton"
@@ -51,7 +59,7 @@
         android:layout_centerVertical="true"
         android:gravity="left"
         android:padding="6dp"
-        android:text="humid"
+        android:text="humidity"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
@@ -91,7 +99,7 @@
         android:layout_marginStart="44dp"
         android:gravity="left"
         android:padding="6dp"
-        android:text="temperature"
+        android:text="temp"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
@@ -118,7 +126,7 @@
         android:layout_marginEnd="44dp"
         android:gravity="left"
         android:padding="6dp"
-        android:text="Indoor Numidity"
+        android:text="Indoor Humidity"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
@@ -131,18 +139,18 @@
         android:layout_alignStart="@+id/textView1"
         android:gravity="left"
         android:padding="6dp"
-        android:text="Outdoor Numidity"
+        android:text="Outdoor Humidity"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
     <Button
-            android:id="@+id/forgeryButton"
+            android:id="@+id/optionsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/openMapButton"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:text="@string/forgeDataButton" />
+            android:text="@string/optionsButton" />
 
         <Button
             android:id="@+id/goBackButton"

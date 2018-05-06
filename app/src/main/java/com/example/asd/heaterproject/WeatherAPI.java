@@ -75,10 +75,8 @@ public class WeatherAPI extends AsyncTask<String, Void, String>{
             } else { weatherDesc = "No weather description found for this location"; }
 
             // set the data to TextViews
-            Indoors.intro.setText("Weather in area:"+ placeName + ", " + countryCode);
-            
-            //Indoors.weatherDescription.setText(weatherDesc);
-
+            Indoors.intro.setText("Weather in " + placeName + ", " + countryCode + ":");
+            Indoors.weatherDescription.setText(weatherDesc);
             Indoors.outdoorTemp.setText(tempCelsius + " °C");
             Indoors.outdoorHumidity.setText(humidity + " %");
 

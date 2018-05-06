@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/textView1"
         android:layout_width="320dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="71dp"
@@ -27,6 +27,7 @@
         android:layout_alignStart="@id/textView1"
         android:text="Weather description"
         android:textColor="@color/white"
+        android:textStyle="bold"
         android:textSize="20dp"/>
 
     <Button

@@ -4,14 +4,11 @@
     <string name="info_prompt">Invalid username/password or no connection to Thingsee, give Thingsee username and password</string>
     <string name="no_connection">No connection to Thingsee</string>
 
-    <string name="sontrasButton">Go to Sontra\'s test activity</string>
-    <string name="goBackButton">Main Menu</string>
     <string name="openMapButton">Open Map</string>
     <string name="optionsButton">Options</string>
     <string name="title_activity_maps">Map of Thingsee Device Location</string>
 
-
-    <string name="back">BACK</string>
+    <string name="back">Main Menu</string>
 
     <string name="mainButton">Request Data</string>
     <string name="batteryButton">Battery</string>

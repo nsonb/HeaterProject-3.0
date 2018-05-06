@@ -33,7 +33,7 @@
         android:id="@+id/temperatureExceeds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Temperature exceeds 60oC"
+        android:text="Indoor temperature exceeds 60 °C (fire!)"
         android:onClick="OnCheckBoxClicked"
         />
 
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="OnCheckBoxClicked"
-        android:text="Thingsee Device Location changes" />
+        android:text="Thingsee device location changes" />
 
     <Button
         android:id="@+id/optionBack"

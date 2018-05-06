@@ -21,8 +21,10 @@ import java.util.TimerTask;
 
 public class NotificationService extends Service {
 
+    // shared preferences
     private static final String LOCATIONID = "LatLong";
     private static final String PREFERENCEID = "Credentials";
+    private static final String OPTIONID = "Option";
     private static final int MAXPOSITIONS = 20;
     private String username,password;
 
@@ -36,6 +38,8 @@ public class NotificationService extends Service {
     // other variables
     public long counter = 1;
     IssueNotification notifier;
+
+    // for comparing location
     public double previousLatitude = 0.0;
     public double previousLongitude = 0.0;
 
@@ -85,22 +89,33 @@ public class NotificationService extends Service {
                 username = prefGet.getString("username","");
                 password = prefGet.getString("password","");
                 new TalkToThingsee().execute("QueryState");
-                compareTemperatures();
-                checkHumidity();
-                checkFire();
-                checkLocation();
+                // always checks battery level
                 checkBattery();
+                // check other stuff only if user wants it
+                SharedPreferences prefGetty = getSharedPreferences(OPTIONID,Activity.MODE_PRIVATE);
+                if(prefGetty.getBoolean("inExceedsOut", false)){
+                    compareTemperatures();
+                }
+                if(prefGetty.getBoolean("humidity", false)){
+                    checkHumidity();
+                }
+                if(prefGetty.getBoolean("tempExceeds", false)){
+                    checkFire();
+                }
+                if(prefGetty.getBoolean("locationChange", false)){
+                    checkLocation();
+                }
             }
         };
     }
-
+    // NOTIFICATIONS
     // compare values and issue the appropriate notifications
     public void compareTemperatures(){
         SharedPreferences prefGet = getSharedPreferences(LOCATIONID, Activity.MODE_PRIVATE);
         double indoorTemperature = Double.valueOf(prefGet.getString("temperature","0.0."));
         if(!temperatureAlertON && WeatherAPI.tempCelsius != 999) {
             if (indoorTemperature <
-                    WeatherAPI.tempCelsius + 5) {
+                    WeatherAPI.tempCelsius + 5 && WeatherAPI.tempCelsius < 8) {
                 notifier.notify("Temperature alert from In & Out",
                         "Indoor temperature has decreased critically.",
                         3322);
@@ -135,7 +150,7 @@ public class NotificationService extends Service {
         if(!fireAlertON && indoorTemperature >= 60.0) {
             notifier.notify("Fire alert from In & Out!",
                     "Indoor temperature is over 60 °C!",
-                    4288);
+                    6666);
             fireAlertON = true;
         }
         else if (fireAlertON && indoorTemperature < 60.0){
